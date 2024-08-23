@@ -1,0 +1,251 @@
+ManifestFileVersion: 0
+CRC: 3275706194
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7fd83b9d1acdd7a41f8379d7f3652c5f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 10367411145bbe88c3a95aaaac7eb881
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ba06f4325a6c9bb4395e8b6716394643, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0deee68bd3d928a44b2ee5cfb8eb1214, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4555395de7cd2ad409d857eb0d83b599, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b93db17560f414f4f929b38bdb810aa3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b8c24b69123d8304db0cb9f2e82cedcf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 64654c3fc52ace5479ddde332111df10, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: eb664d13616563944a0ab2829e5352c4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 63d582903bd20d941b9906e232549eb1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f07d6bb6c5082f40b55c636fb391155, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe6ab6e2c831e7a4da93389d90193944, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 54dfb34b22acd3248b89ab66138511a3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 113eda1d842ac3c4b815e07621c5733c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 69fb29252c06c2e4fbe794c5b021b6e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1504cb948efeb2d45b15b031e1c275d7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 234c9f5aba680cc4196b301e6b5e78cc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1cd912854e971f247860ad5dfb033d75, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 810925d027992eb46bf782aa10844f13, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4f04d0f9be2bf2241a454ecea0608f2d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5d5aafcfdeffe43408ef25ed95800a8f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fec5e3d84b1f1fa4eb1f3eca84aed27a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 88a811e10b56eb24c9710d3d92b4329f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30616b2e4c2605c4bb497fccf1f8435d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ce5fcdb32abeddc42b04f0bd1e276db0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5feaf7b4823494a4e90253804316915c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dad48ddbb013c1144b5934939651414d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 52d1c252a3bbba64b820988c85d001d5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 030f0c5265cb2f6408fd603aef34d651, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2d8bc9e11eac847428e2bee8c5b1274c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d5436ea1bee6d2645be12dc0d6a6a58e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 136f9db87449d2146a2e46de628d4966, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 19237496dbd70fb4c9d599172a05ce4d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Recipe
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Scrollbar/ScrollEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/14.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/11.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/26.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/4.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/20.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/32.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/18.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/9.mp3
+- Assets/00.WorkSpace/Asset/Basic/Image/IconAtlas.png
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/21.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/27.mp3
+- Assets/00.WorkSpace/Asset/Basic/Image/BasicUI.png
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/EnlargementViewer.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/22.mp3
+- Assets/00.WorkSpace/Asset/Basic/recipe/recipeList.asset
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/HintUI.prefab
+- Assets/00.WorkSpace/Asset/Basic/Image/BackGrroundUI.png
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/13.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/34.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/29.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/25.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/HintCountNotEnough.prefab
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/Inventory Slot.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/39.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/HintPopup.prefab
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/Inventory.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/2.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/16.mp3
+- Assets/00.WorkSpace/Asset/Basic/Image/BackGroundUI2.png
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/InGameOptionPanel.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/15.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/37.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/10.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/28.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/31.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/LogUI.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/33.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/6.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/19.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/17.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/HintSlotPrefab.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/8.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/PlayInGameUI.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/5.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/12.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/40.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/3.mp3
+- Assets/00.WorkSpace/Asset/Basic/Prefabs/UserInventory.prefab
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/30.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/35.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/23.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/38.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/7.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/36.mp3
+- Assets/00.WorkSpace/Asset/Basic/ButtonSound/24.mp3
+Dependencies:
+- C:/Users/KGA/Desktop/RoomEsc/./Bundle/Android/chapter02
+- C:/Users/KGA/Desktop/RoomEsc/./Bundle/Android/chapter03
+- C:/Users/KGA/Desktop/RoomEsc/./Bundle/Android/chapter04
+- C:/Users/KGA/Desktop/RoomEsc/./Bundle/Android/chapter05

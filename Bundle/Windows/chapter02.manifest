@@ -1,0 +1,119 @@
+ManifestFileVersion: 0
+CRC: 2172690978
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4d7340bf99f55da80c84a8964ee461c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 00965450a0043b0874b597448913987b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2A3.PNG
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question1/C2Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q10.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/FireplacePhoto1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2A1.PNG
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question9/C2Q9 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/BrickBox2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question3/C2Q3 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/ClosedIronDoor.jpg
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question10/C2Q10 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question4/C2Q4 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/Redbrick.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question6/C2 Question6.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/Greybrick.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/fishbowl.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/StoneBox.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question5/C2Q5 Hint1.asset
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uADF8\uB9BC6.png"
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uADF8\uB9BC9.png"
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/WaterCup2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question7/C2Q7 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question3/C2Q3 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/handkerchief.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question8/C2Q8 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/wise saying.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question5/C2Q5 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/handle.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/BoxClosed.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/BackGround/PigHouse.png
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uADF8\uB9BC8.png"
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/BrickBox1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/BookShelf.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question6/C2Q6 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/bookshelf2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question5/C2 Question5.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q9.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/BoxOpen.png
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uD655\uB300.png"
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question1/C2Q1 Hint3.asset
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Object/\uBB38\uC8FC\uC0AC\uC704-removebg-preview.png"
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/PigPhoto2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/Yellowbrick.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/CompassHint2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question3/C2Q3 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/CompassHint.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/WoodClosed.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question1/C2Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/fireplace1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/wall4079.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question2/C2 Question2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q6.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question4/C2Q4 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/PigPhoto3.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/FireplacePhoto2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question10/C2Q10 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question6/C2Q6 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question4/C2Q4 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/Bookshelf22.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question10/C2 Question10.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q5.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question6/C2Q6 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q8.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question8/C2Q8 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question8/C2Q8 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question7/C2Q7 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question2/C2Q2 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q3.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question2/C2Q2 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question7/C2Q7 Hint2.asset
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uADF8\uB9BC7.png"
+- "Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/\uBC88\uD638\uD78C\uD2B8.png"
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/BrickHint1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/PigKey.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question9/C2Q9 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/fireplace2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q4.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/bookshelf.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question9/C2 Question9.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question3/C2 Question3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question7/C2 Question7.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question10/C2Q10 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q7.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2A2.PNG
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question8/C2 Question8.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Hint/Whitebrick.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q2.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/magnifying.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question4/C2 Question4.asset
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Item/WaterCup1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Answer/C2Q1.png
+- Assets/00.WorkSpace/Asset/Chapter2/Image/Object/WoodenDoorOpen.png
+- Assets/00.WorkSpace/Asset/Chapter2/Hint/Question1/C2 Question1.asset
+Dependencies: []

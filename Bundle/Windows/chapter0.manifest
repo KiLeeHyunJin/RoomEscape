@@ -1,0 +1,55 @@
+ManifestFileVersion: 0
+CRC: 2655288375
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a72e720d240b7cf4c0808fe4e8bc1888
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 00965450a0043b0874b597448913987b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/finishkey.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/DoorLock.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/OpenedBox.png
+- Assets/00.WorkSpace/Asset/Chapter0/Hint/Hint02.asset
+- Assets/00.WorkSpace/Asset/Chapter0/Hint/Hint01.asset
+- Assets/00.WorkSpace/Asset/Chapter0/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/rightkey.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/safe.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/A_2D_cartoon-style_dial_padlock_bright_brown-removebg-preview.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/TutorialField.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/Key.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/TutorialLock.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/KeyPart2.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/ClosedBox.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/circle.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/keybox.PNG
+- "Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/\uD654\uC0B4\uD45C.png"
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/triangle.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/RedHood.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/TutorialDoor.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/leftkey.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Hint/Question00.asset
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/calenderPuzzle.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Hint/Hint00.asset
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/doublecircle.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/TutorialResource/KeyPart1.png
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/tutoDoor.PNG
+- Assets/00.WorkSpace/Asset/Chapter0/Chapter0/tutorial/rectangle.PNG
+Dependencies:
+- D:/Project/Editor/RoomEsc/./Bundle/Windows/chapter04

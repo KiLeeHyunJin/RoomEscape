@@ -1,0 +1,217 @@
+ManifestFileVersion: 0
+CRC: 2349001023
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2fff12bd0883888fd78c8b33f96bf2c8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 42403f6b2033deefb148276bc9c93d08
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5e50441f8e5a48e41bd89daed09f0a50, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f07d6bb6c5082f40b55c636fb391155, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9c51bd808817921429cb20b085c13e71, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cb8219a43bab52347b4d93eda17cbcba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 164e47b4b48bbd047a0d690a6cda2816, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e92910bc6a725de4e98d95623520a922, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3b1400da5a71cf940adc6237385cfef5, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/MiniGame/C4Genie3Game.prefab
+- "Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/\uBC30\uCE58 \uC608\uC2DC\uB3C41.png"
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/signHint2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A6.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A4.png
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/JustShow/SkeletonPopUP 1.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/JustShow/StalactitePopUP.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/MiniGame/C4Genie1Game.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question7/C5 Question7.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5W1.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question9/C5 Question9.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question4/C5Q4 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question8/C5 Question8.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question9/C5Q9 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/signHint.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/jewelHint.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question10/C5Q10 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question6/C5Q6 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question6/C5Q6 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question5/C5Q5 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question7/C5Q7 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/lamp2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question7/C5Q7 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/MiniGame/C4BoxGame.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/stalactite.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question7/C5Q7 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question1/C5Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question10/C5 Question10.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/rock3.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A3.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/carpetLocked.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/pattern.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/bone.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/patternpiece1.png
+- "Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/\uBC30\uCE58 \uC608\uC2DC\uB3C42.png"
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/lamp.png
+- "Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/\uBC30\uCE58 \uC608\uC2DC\uB3C41
+  (\uAC15\uC870).png"
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question10/C5Q10 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Field/background.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/Shovel00.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/handkerchief.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/Genie2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question5/C5Q5 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/JustShow/TurbanPopUP.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question4/C5 Question4.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question2/C5Q2 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/turban.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5Q10H1.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question6/C5Q6 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/jewelryBox.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/rock1.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question6/C5 Question6.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/rock2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question10/C5Q10 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question2/C5 Question2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question8/C5Q8 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question5/C5Q5 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A5.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question4/C5Q4 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/line01.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/MiniGame/C4CarpetGame.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/Genie1.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question8/C5Q8 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question2/C5Q2 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/MiniGame/C4HoleRockGame.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question9/C5Q9 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/sign2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/Genie3.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Stalactite1.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/shovel.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/slate2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question3/C5Q3 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/BoxOpen.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/carpet.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Stalactite3.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Image/HintSystem/C5A1.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question1/C5 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question9/C5Q9 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/patterncomplete.png
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question1/C5Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question3/C5Q3 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/JustShow/SkeletonPopUP 2.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Image/line02.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question1/C5Q1 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/magicRing.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/line00.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Hint/slate1.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Stalactite4.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Image/arrow-removebg-preview.png
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/JustShow/JewelryPopUp.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question3/C5Q3 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question5/C5 Question5.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Hint/Question3/C5 Question3.asset
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Item/patternpiece2.png
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Stalactite2.PNG
+- Assets/00.WorkSpace/Asset/Chapter5/Prefabs/ItemGet/CarpetGet.prefab
+- Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/Interact/BoxClosed.png
+- "Assets/00.WorkSpace/Asset/Chapter5/Image/Aladdin/\uBC30\uCE58 \uC608\uC2DC\uB3C42
+  (\uAC15\uC870).png"
+Dependencies:
+- D:/Project/Editor/RoomEsc/./Bundle/Windows/chapter03

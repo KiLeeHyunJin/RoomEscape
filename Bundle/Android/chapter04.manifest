@@ -1,0 +1,333 @@
+ManifestFileVersion: 0
+CRC: 1024933312
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 010a4fac6c506d1637aa805937ed9a64
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b70300c24c34a66786cac6983ef80e48
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 36109f8a3c3b9e34c938e0b3383d3dbf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f430e015271807f42a8805ed94d27b64, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a539466c33d3ef44bb49e35ed1f6b032, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: db1db8d0ba1c55249bc3ef3410499b3f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ceea9bc18fe9d774a9fdf14e5d4e3c94, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 98cb582f3cda59e42858620e1bf6a063, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f07d6bb6c5082f40b55c636fb391155, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1eefddd698e041d499f248dfb2ddaae4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b10ed3290771446409491f0a1356403e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cb8219a43bab52347b4d93eda17cbcba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a2d7dba138bab234b9d2e26b45cec35b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 39974a8a4e2b32247aaf0f83691994db, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1074cece8cab3384098da6ab94071b96, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 45ed75545f1f8cb45b3ddc9b949ad08a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 52d1c252a3bbba64b820988c85d001d5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f50a75d0df86fcf47b4b288370f282d6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0a8cf3a8a6c79094b803fbc8744487c4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: df1d9db06facacc4d9d26bf062eaaf9e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8578095d233a41d49ad2614ed772ed42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 030f0c5265cb2f6408fd603aef34d651, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7588c6a401cc1d8498953584a256a55e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2d8bc9e11eac847428e2bee8c5b1274c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e92910bc6a725de4e98d95623520a922, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/ColorQuiz.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Closet.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/keyClose.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/ColorQuizPopupUI  .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/CupPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/BasicUI.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/BirdSong.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/BiscuitQuiz.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 5/C4Q5 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Dial1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/ColorQuizInputPopupUI  .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/BackGround/CookieHouse.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 8/C4Q8 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q8H1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/FireplaceClosed.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Quiz2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q13H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/BlueBird.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Key.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ChestCloseRight.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/note3.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 7/C4Q7 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/cookie.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/GreenCookie.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/OpenCloset.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 6/C4Q6 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Animation/BlueBird/BlueBird.anim
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Lock.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 5/C4Q5 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/WardrobeLock.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/RedCookie.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/multiply.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 1/C4 Question1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/CageOpen.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 4/C4Q4 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/BlueCookie.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/BrazierOpenMessage.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 9/C4Q9 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/DoorClose.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Drawer.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 7/C4 Question7.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/YellowPostAndDoughGet .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 1/C4Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/IconAtlas.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 6/C4Q6 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Item/GreenPostMessage.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Animation/BlueBird/BlueBirdPrefab.controller
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Box.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/InputKeyboardPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 8/C4Q8 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Wardrobe.png
+- Assets/00.WorkSpace/Asset/Chapter4/Item/ChocoDoorKey.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 4/C4Q4 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/DoorOpen.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ClosetOpen.png
+- Assets/00.WorkSpace/Asset/Chapter4/Field.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/noteBlue.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Case.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/LockInput.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/YellowPostMessagePopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/CookieGet.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q4H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Cup.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/DoughSlip2.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 9/C4Q9 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/MainDoorKey.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/note2.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/WardrobeLock.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/CookieLadder.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/DoughSlip.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ChestCloseLeft.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/PostMessage.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 2/C4Q2 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/SilverRingGet.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 5/C4Q5 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/broomstick.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/note1.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 7/C4Q7 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Item/SilverRing.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/RockScissorsPaper.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/LockPopupUI .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Calendar.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/GreenPostMessage.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Cage.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/BroomStickClickUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/CageClosed.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 9/C4Q9 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/CageOpenKey.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q14H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Dial.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Quiz1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 3/C4 Question3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Item/Dough.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q12H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/Hint.png
+- Assets/00.WorkSpace/Asset/Chapter4/Item/Cookie.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/ColorQuiz1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/OpenCage.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 7/C4Q7 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/note4.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/ClosetKey.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 1/C4Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/dough.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/BrazierPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Item/Goldenkey.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/FireplaceOpen.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 9/C4 Question9.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Door.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/GraphInputPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Stick.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/TreasureBoxMiniGame.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/note1.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/note5.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/MainDoorKeyGet.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 3/C4Q3 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 8/C4 Question8.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 5/C4 Question5.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/WardrobeMiniGame.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/GraphPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 6/C4Q6 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Item/MagicRing.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 4/C4Q4 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/CalendarPopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ClosetClosed.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q7H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/OpenDrawer.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/LineHint.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Quiz2_2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ChestOpenLeft.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/noteRed.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Brazier.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 4/C4 Question4.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/cookie.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/note2.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/Calendar.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q2H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q5H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Brazier2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 6/C4 Question6.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/YellowPostMessage.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/GoldKeyGet.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Graph.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/A calculator.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Dial2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/DialBoxOpen.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Item/YellowPostMessage.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/CookiePopupUI.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/BlueBirdPrefab.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 1/C4Q1 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/Star Cup.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/CookieRing.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/BrazierQuizPopupUI _2.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/YellowPostMessage 1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q11H2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q3H3.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/cookie2.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/Goldkey.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 2/C4Q2 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/ring.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/cage1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/ItemGet/GreenPostGet .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/BrazierQuizPopupUI_1.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Object/ChestOpenRight.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 3/C4Q3 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 2/C4 Question2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 2/C4Q2 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/C4Q1H1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 8/C4Q8 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/Item/HouseKey.png
+- Assets/00.WorkSpace/Asset/Chapter4/Hint/Chapter4/Question 3/C4Q3 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/calendarHint.png
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/MiniGame/DialBoxPopupUI .prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/note3.png
+- Assets/00.WorkSpace/Asset/Chapter4/Image/HintImage/LineHintPopup.png
+- Assets/00.WorkSpace/Asset/Chapter4/oldImage/OpenCage 1.PNG
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/JustShow/GreenPostMessagePopupUI.prefab
+Dependencies: []

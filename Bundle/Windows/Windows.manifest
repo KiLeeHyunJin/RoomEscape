@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 4026419734
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: chapter02
+      Dependencies: {}
+    Info_1:
+      Name: chapter01
+      Dependencies: {}
+    Info_2:
+      Name: basic
+      Dependencies: {}
+    Info_3:
+      Name: chapter0
+      Dependencies:
+        Dependency_0: chapter04
+    Info_4:
+      Name: chapter03
+      Dependencies: {}
+    Info_5:
+      Name: chapter04
+      Dependencies: {}
+    Info_6:
+      Name: chapter05
+      Dependencies:
+        Dependency_0: chapter03

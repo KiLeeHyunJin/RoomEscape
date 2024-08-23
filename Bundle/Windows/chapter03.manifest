@@ -1,0 +1,219 @@
+ManifestFileVersion: 0
+CRC: 410854176
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6040ba990ccac97261fa3710e118dc68
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bce6a05c18760745f1c2b2948d65b617
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b3b5e283ee426ba4eb00c9ef9163aa8c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 030f0c5265cb2f6408fd603aef34d651, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 9/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/field.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/scroll_tied_string.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Jangdokdae.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 9/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/flower.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 7/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/jar.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 4/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Background/kongjwi background.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/LightoutHint.PNG
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 2/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 2/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Slot0.PNG
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/wooden_tongs.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Fixed_closed_gate.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 9/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/fence_open.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/HammerHead.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 3/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 3/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Jangdokdae 1.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/watering_can.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/red_string.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/rat_hole.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 7/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Candlestick.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Broken_main_gate.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/bug.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/cow.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/RedString.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/scroll.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/fence_closed.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Silverware.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 4/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/pine_tree.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Toad.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 1/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/unfolded_scroll.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 6/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/watering_can.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/watering_can_water.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Sprayer.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Stringpouch.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 5/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 7/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/String_Pocket.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/bar.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 1/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 8/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Balloon.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/poket-removebg-preview.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 6/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/box_2.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 3/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/honey_pot.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Bar.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/wooden_tongs.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 1/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/hammer_head.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/JangdokdaePopUp.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/TongsHead.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/hammer.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Pocket.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 5/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/balloon_bunch.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/balloon.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/pocket.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/A_bag_filled_with_rice.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/silverware.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Hammer.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/bee.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Slot1.PNG
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 2/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/toad.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Sign.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/table.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Scroll.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 5/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Doorknob.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 6/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 9/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/HoneycombKey.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/candlestick.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 5/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Fixed_open_main_door.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/mousetrap.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 2/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 8/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/RedStringScroll.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Honeypot.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/mouse.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/FilledSprayer.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/poket-removebg-preview.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Tablecloth.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/fruit_box.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/jar.png
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Jar.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Slot2.PNG
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 4/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/wooden_claw_head.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 8/C3Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Tongs.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/tablecloth.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 8/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 7/C3 Question01.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/doorknob.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Crow.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 1/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 3/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Item/Bag_of_rice.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/toad.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/honeycomb_key.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 4/C3Q1 Hint0.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/Honey_flowing_down.png
+- Assets/00.WorkSpace/Asset/Chapter3/Hint/Question1 6/C3Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Object/honeycomb.png
+- Assets/00.WorkSpace/Asset/Chapter3/Image/Item/red_string_tied_to_something.png
+Dependencies: []

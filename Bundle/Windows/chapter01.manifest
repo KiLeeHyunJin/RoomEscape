@@ -1,0 +1,176 @@
+ManifestFileVersion: 0
+CRC: 3912917843
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: afc9baa11c9bf4a205d3ad2c4569b791
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4f956222805154e0e59d1fb560b73737
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b2407dd263353f4aab4eb63d45551cd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a6cda2b6821d8a4e8efe4259bccca4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9786433b7e17dd0469c8ef1fd2295632, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2d8bc9e11eac847428e2bee8c5b1274c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c321824c9fb6ed742bb83ebff3f90272, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question7/C1Q7 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question3/C1 Question3.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question1/C1 Question1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/door.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question7/C1Q7 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question6/C1 Question6.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Hint/311Note.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question1/C1Q1 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question6/C1Q6 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A2.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question Database.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question2/C1Q2 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question2/C1 Question2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question6/C1Q6 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Field/background.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question7/C1 Question7.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A4.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1Q1H2.PNG
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Chapter5Arrow.PNG
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer4.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Tiger.PNG
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/doorHole.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Hint/candleBowl.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/footprints.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Hint/tigerFootprints.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question5/C1Q5 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A3.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer1.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer6.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Hint/tiger.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Item/awl.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question1/C1Q1 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question3/C1Q3 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A6.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Hint/rope.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question2/C1Q2 Hint3.asset
+- Assets/Resources/UI/Popup/OutGameOptionPanel.prefab
+- Assets/00.WorkSpace/Asset/Chapter4/Prefabs/DialNumBox.prefab
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question3/C1Q3 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question4/C1 Question4.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Footprint.PNG
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question2/C1Q2 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A1.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/Dongajul.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question4/C1Q4 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer2.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question1/C1Q1 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question6/C1Q6 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer5.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Item/cane.png
+- Assets/Resources/UI/Popup/Prefab/DialNumBox.prefab
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question4/C1Q4 Hint3.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Item/riceCake.png
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question5/C1 Question5.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question5/C1Q5 Hint1.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Hint/Question4/C1Q4 Hint2.asset
+- Assets/00.WorkSpace/Asset/Chapter1/Image/HintSystem/C1A5.png
+- Assets/00.WorkSpace/Asset/Chapter1/Image/Interact/drawer3.png
+Dependencies: []
