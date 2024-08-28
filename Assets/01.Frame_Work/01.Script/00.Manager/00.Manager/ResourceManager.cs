@@ -53,16 +53,16 @@ public class ResourceManager : Singleton<ResourceManager>
         public Action<UnityEngine.Object> call;
     }
 
-    private Dictionary<string, AssetBundle> BundleDic 
-    { get { return bundleDic ??= new();} }  
-    private Dictionary<string, AssetBundle> DonReleaseBundleDic 
-    { get { return donReleaseBundleDic ??= new();}}
+    private Dictionary<string, AssetBundle> BundleDic
+    { get { return bundleDic ??= new(); } }
+    private Dictionary<string, AssetBundle> DonReleaseBundleDic
+    { get { return donReleaseBundleDic ??= new(); } }
 
     #endregion AddressableData
 
 
     //다운로드 중인 번들
-    private HashSet<string> loadBundleName; 
+    private HashSet<string> loadBundleName;
 
 
     //다운로드 대기 번들
@@ -132,32 +132,35 @@ public class ResourceManager : Singleton<ResourceManager>
     /// <summary>
     /// 번들 로드 시도
     /// </summary>
-    public void GetAsset(string bundleName, string fileName, ResourceType _type,Action<UnityEngine.Object> returnCall = null, bool compulsion = false, bool donReleaseState = false)
+    public void GetAsset(string bundleName, string fileName, ResourceType _type, Action<UnityEngine.Object> returnCall = null, bool compulsion = false, bool donReleaseState = false)
     {
         Dictionary<string, AssetBundle> dic = GetDictionary(donReleaseState);
-
+        //번들이 딕셔너리에 존재하는 지 확인
         if (dic.ContainsKey(bundleName))
         {
-            CallMethod(new(_type, fileName, donReleaseState, returnCall),bundleName);
+            //존재하면 번들에서 데이터를 불러온다.
+            CallMethod(new(_type, fileName, donReleaseState, returnCall), bundleName);
             if (waitBundleDic.ContainsKey(bundleName)) //대기중인 콜백이 있다면 해당 콜백 진행
                 SendWaitCall(bundleName);
             return;
         }
-
-        if(loadBundleName.Add(bundleName) == false)
+        //번들에 없으면 대기열에 넣어놓는다.
+        if (loadBundleName.Add(bundleName) == false)
         {
             if (waitBundleDic.ContainsKey(bundleName) == false)
                 waitBundleDic.Add(bundleName, new());
-
+            //수행해야하는 내용을 추가해준다.
             waitBundleDic[bundleName].Add(new(_type, fileName, donReleaseState, returnCall));
             return;
         }
         else
         {
+            //대기열 추가
             waitBundleDic.Add(bundleName, new());
+            //대기열의 내용을 추가
             waitBundleDic[bundleName].
                 Add(new(_type, fileName, donReleaseState, returnCall));
-
+            //강제 다운로드인지 아닌지 판별해서 액션에 저장
             Action<string, Action<AssetBundle>> loadAction = compulsion ?
             Manager.DownLoadBundle.GetLoadOrDownloadBundle : Manager.DownLoadBundle.GetLoadBundle;
 
@@ -165,12 +168,15 @@ public class ResourceManager : Singleton<ResourceManager>
             {
                 if (bundle == null)
                 {
+                    //대기열에서 삭제 및 로드 번들 네임에서 제거
                     waitBundleDic.Remove(bundleName);
                     loadBundleName.Remove(bundleName);
+                    //로드 실패
                     LoadFail(bundleName);
                 }
                 else
                 {
+                    //번들을 딕셔너리에 추가 및 로드 내용 진행
                     dic.Add(bundleName, bundle);
                     SendWaitCall(bundleName);
                 }
@@ -185,9 +191,10 @@ public class ResourceManager : Singleton<ResourceManager>
     /// </summary>
     void SendWaitCall(string bundleName)
     {
+        //대기열에 존재하는지 확인
         if (waitBundleDic.ContainsKey(bundleName) == false)
             return;
-
+        //번들 딕셔너리에 존재하는지 확인
         if (BundleDic.ContainsKey(bundleName) ||
            DonReleaseBundleDic.ContainsKey(bundleName))
         {
@@ -203,25 +210,27 @@ public class ResourceManager : Singleton<ResourceManager>
     }
 
     /// <summary>
-    /// 
+    /// 번들에서 데이터를 로드해서 콜백으로 반환
     /// </summary>
-    void GetLoadData<TObject>(string bundleName,in StateData stateData, Action<UnityEngine.Object> bundleRecall ) where TObject : UnityEngine.Object
+    void GetLoadData<TObject>(string bundleName, in StateData stateData, Action<UnityEngine.Object> bundleRecall) where TObject : UnityEngine.Object
     {
+        //로드하려는 파일의 이름을 검사
         if (string.IsNullOrEmpty(stateData.fileName))
             return;
-
+        //검사 딕셔너리의 종류를 가져온다.
         Dictionary<string, AssetBundle> dic = GetDictionary(stateData.donRelease);
 
-        if (dic.TryGetValue(bundleName, out AssetBundle bundle) && 
+        //포함되어있는지 확인한다.
+        if (dic.TryGetValue(bundleName, out AssetBundle bundle) &&
             bundle.Contains(stateData.fileName))
         {
             bundleRecall?.Invoke(bundle.LoadAsset<TObject>(stateData.fileName)); //데이터 로드 콜백 함수 실행
         }
     }
 
+    //번들에서 데이터를 추출한다.
     void CallMethod(WaitData waitdata, string bundleName)
     {
-
         switch (waitdata.state.type)
         {
             case ResourceType.Animation:
@@ -245,17 +254,18 @@ public class ResourceManager : Singleton<ResourceManager>
         }
     }
 
-    Dictionary<string, AssetBundle> GetDictionary(bool donRelease) 
-        =>  donRelease? DonReleaseBundleDic : BundleDic;
+    //추출해야하는 딕셔너리를 확인해서 반환
+    Dictionary<string, AssetBundle> GetDictionary(bool donRelease)
+        => donRelease ? DonReleaseBundleDic : BundleDic;
 
-    void LoadFail(string bundleName) 
+    void LoadFail(string bundleName)
         => Message.LogError($"{bundleName}번들 Load Fail.");
 
 
 
 
 
-
+    //로드중인 번들을 해제
     public void ReleaseBundle()
     {
         foreach (KeyValuePair<string, AssetBundle> bundle in BundleDic)
@@ -272,15 +282,15 @@ public class ResourceManager : Singleton<ResourceManager>
             bundle.Unload(true);
         }
     }
-    
 
 
 
-#region Addressable
+
+    #region Addressable
 
     void InitAddressable()
     {
-#region Addressable
+        #region Addressable
         assetArray = new Dictionary<string, AsyncOperationHandle>[(int)AssetType.END];
         dontReleaseArray = new Dictionary<string, AsyncOperationHandle>[(int)AssetType.END];
         multiArray = new Dictionary<string, AsyncOperationHandle<Sprite[]>>();
@@ -291,7 +301,7 @@ public class ResourceManager : Singleton<ResourceManager>
             assetArray[i] = new Dictionary<string, AsyncOperationHandle>();
             dontReleaseArray[i] = new Dictionary<string, AsyncOperationHandle>();
         }
-#endregion
+        #endregion
     }
 
     //문자열을 이용한 에셋 로드
@@ -377,7 +387,7 @@ public class ResourceManager : Singleton<ResourceManager>
 
 
     //키를 통해 핸들을 액션을 통해 반환 또는 실행 없을경우 레퍼런스를 이용해 에셋 로드
-    public bool GetHandle<TObject>(AssetReferenceT<TObject> path, string key , Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
+    public bool GetHandle<TObject>(AssetReferenceT<TObject> path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
     {
         //잘못된 형식이면 종료
         AssetType objectType = CheckEnum<TObject>();
@@ -387,7 +397,7 @@ public class ResourceManager : Singleton<ResourceManager>
         Dictionary<string, AsyncOperationHandle>[] checkArray = dontRelease ? dontReleaseArray : assetArray;
         if (string.IsNullOrEmpty(key))
         {
-            LoadHandle(path, UnityEngine.Random.Range(0,float.MaxValue).ToString(), call, dontRelease);
+            LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
             return false;
         }
         //존재하면 액션 실행
@@ -450,14 +460,14 @@ public class ResourceManager : Singleton<ResourceManager>
     }
 
     //키를 통해 핸들을 액션을 통해 반환 또는 실행 없을경우 문자열을 이용해 에셋 로드
-    public bool GetHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null,  bool dontRelease = false) where TObject : UnityEngine.Object
+    public bool GetHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
     {
         AssetType objectType = CheckEnum<TObject>();
         if (objectType == AssetType.Other)
             return false;
         //확인할 목록 선택
         Dictionary<string, AsyncOperationHandle>[] checkArray = dontRelease ? dontReleaseArray : assetArray;
-        if(string.IsNullOrEmpty(key))
+        if (string.IsNullOrEmpty(key))
         {
             LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
             return false;
@@ -474,7 +484,7 @@ public class ResourceManager : Singleton<ResourceManager>
         }
     }
 
-    public bool GetHandle<TObject>(string key, Action<AsyncOperationHandle<TObject>> call,bool dontRelease = false) where TObject : UnityEngine.Object
+    public bool GetHandle<TObject>(string key, Action<AsyncOperationHandle<TObject>> call, bool dontRelease = false) where TObject : UnityEngine.Object
     {
         if (string.IsNullOrEmpty(key))
             return false;
@@ -533,7 +543,7 @@ public class ResourceManager : Singleton<ResourceManager>
                 ReleaseHandle<TMP_FontAsset>((int)type, checkDic);
                 break;
         }
-        foreach (KeyValuePair<string,AsyncOperationHandle<Sprite[]>> pair in multiArray)
+        foreach (KeyValuePair<string, AsyncOperationHandle<Sprite[]>> pair in multiArray)
         {
             if (pair.Value.IsValid())
                 Addressables.Release(pair.Value);
@@ -547,7 +557,7 @@ public class ResourceManager : Singleton<ResourceManager>
             ReleaseHandle((AssetType)i, assetArray);
         }
     }
-#endregion
+    #endregion
 
     AssetType CheckEnum<TObject>() where TObject : UnityEngine.Object
     {
@@ -578,9 +588,9 @@ public class ResourceManager : Singleton<ResourceManager>
     }
     public enum BundleType
     {
-        chapter01       = 1 << 5,
-        chapter02       = 1 << 6,
-        chapter03       = 1 << 7,        
+        chapter01 = 1 << 5,
+        chapter02 = 1 << 6,
+        chapter03 = 1 << 7,
 
         END = 1 << 31
     }

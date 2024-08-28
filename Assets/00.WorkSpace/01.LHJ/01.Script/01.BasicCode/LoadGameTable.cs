@@ -74,7 +74,9 @@ public class LoadGameTable : MonoBehaviour
     void CreatInGameUI()
     {
         //인게임 UI로드를 시도한다.
-        Manager.Resource.GetAsset("basic", "PlayInGameUI", ResourceType.GameObject, (obj) =>
+        Manager.Resource.GetAsset
+            (bundleName : "basic", fileName : "PlayInGameUI", 
+             ResourceType.GameObject, (obj) =>
         {
             //로드한 객체 데이터를 복제한다.
             GameObject ingameUI = Instantiate((GameObject)obj);

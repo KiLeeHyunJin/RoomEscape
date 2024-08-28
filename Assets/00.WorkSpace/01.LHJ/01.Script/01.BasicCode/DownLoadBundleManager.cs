@@ -11,12 +11,12 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 {
     const string DownloadPath = "https://drive.google.com/uc?export=download&id=";
     private readonly string serverVersionTableURL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
-    
+
     //private readonly string localVersionTablePath = "/versionTable.csv"; // 로컬 버전 테이블 경로
-    string LocalVersionPath {   get {return Manager.Data.DataPath; } }
+    string LocalVersionPath { get { return Manager.Data.DataPath; } }
 
     Dictionary<string, string[]> localVersionTable;
-    Dictionary<string, string[]> VersionTable   {   get {   return localVersionTable;  }    }
+    Dictionary<string, string[]> VersionTable { get { return localVersionTable; } }
 
     bool localLoad;
     bool serverLoad;
@@ -115,16 +115,20 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
                 {
                     if (checkNameState)
                     {
+                        //다운로드 확인
                         StartCoroutine(DownloadBundle(bundleName, bundleCall));
                     }
                     else
                     {
+                        //버전 쳌
                         VersionRefresh((refreshState) =>
                         {
+                            //포함 확인
                             IncludeCurrentTableVersionCheck(bundleName, (reCheckNameState) =>
                             {
                                 if (reCheckNameState)
                                 {
+                                    //다운로드 확인
                                     StartCoroutine(DownloadBundle(bundleName, bundleCall));
                                 }
                                 else
@@ -157,7 +161,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             }
         }
         int datailTextNum = 0;
-        switch(Manager.Chapter.chapter)
+        switch (Manager.Chapter.chapter)
         {
             case 0:
                 break;
@@ -191,7 +195,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         }
         instancePopupUI.InitText(titleText, detailText);
     }
-    void OnDownloadPopup( Queue<(UnityWebRequest, string)> waitQueue, List<string> dowloadList, uint fetchSize)
+    void OnDownloadPopup(Queue<(UnityWebRequest, string)> waitQueue, List<string> dowloadList, uint fetchSize)
     {
         //디스크 잔여량 확인
         //ulong freeSpace = GetFreeDiskSpace();
@@ -206,19 +210,22 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         if (popUpUI == null)
             return;
         instancePopupUI = popUpUI as PlayerBeforeCheckPopup;
+        //팝업창 초기화
         instancePopupUI.Init();
         setText();
 
         instancePopupUI.InitAction(
         () =>
         {
+            //모든 팝업 삭제
             Manager.UI.ClearPopUpUI();
             if (downloadCo != null)
                 StopCoroutine(downloadCo);
+
             downloadCo = StartCoroutine(DownLoadRoutine(waitQueue, dowloadList.Count, fetchSize));
             instancePopupUI = null;
         },
-        ()=>
+        () =>
         {
             Manager.UI.ClearPopUpUI();
             instancePopupUI = null;
@@ -237,7 +244,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             return;
 
         string bundleName = $"chapter{string.Format("{0:D2}", Manager.Chapter.chapter)}";
-        HasBundleCheck(bundleName, (state) => 
+        //번들 소유 확인
+        HasBundleCheck(bundleName, (state) =>
         {
             Manager.Resource.ReleaseBundle();
             Caching.ClearAllCachedVersions(bundleName);
@@ -297,7 +305,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         UnityWebRequestAsyncOperation oper = uwr.SendWebRequest();
         while (oper.isDone == false)
             yield return new WaitForSeconds(0.1f);
-        if(uwr.result == UnityWebRequest.Result.Success)
+        if (uwr.result == UnityWebRequest.Result.Success)
         {
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(uwr);
             bundleCall?.Invoke(bundle);
@@ -344,10 +352,11 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             callBundle?.Invoke(null);
             yield break;
         }
+        //번들 url 재설정 및 요청
         UnityWebRequest uwr = UnityWebRequest.Head(
             ExtractSubstring(VersionTable[bundleName][(int)VersionTableColumn.DownloadLink]));
         yield return uwr.SendWebRequest();
-
+        //번들 로드
         UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(
             ExtractSubstring(VersionTable[bundleName][(int)VersionTableColumn.DownloadLink]),
             Hash128.Parse(VersionTable[bundleName][(int)VersionTableColumn.Version]));
@@ -401,7 +410,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     IEnumerator DownLoadRoutine(Queue<(UnityWebRequest, string)> waitQueue, int downloadCount, uint fetchSize)
     {
         foreach ((UnityWebRequest, string) pair in waitQueue)
-            Caching.ClearCachedVersion(pair.Item2, Hash128.Parse(VersionTable[pair.Item2][(int)VersionTableColumn.Version]) );
+            Caching.ClearCachedVersion(pair.Item2, Hash128.Parse(VersionTable[pair.Item2][(int)VersionTableColumn.Version]));
 
         //다운로드 팝업 활성화
         DownLoadUI _downloadUI = Manager.UI.ShowPopUpUI(downLoadUI);
@@ -484,7 +493,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// </summary>
     bool CheckVersionCached(string bundleName)
     {
-        return VersionTable.ContainsKey(bundleName) && 
+        return VersionTable.ContainsKey(bundleName) &&
             Caching.IsVersionCached(
                     ExtractSubstring(VersionTable[bundleName][(int)VersionTableColumn.DownloadLink]),
                     Hash128.Parse(VersionTable[bundleName][(int)VersionTableColumn.Version]));
@@ -515,9 +524,9 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 
         while (waitQueue.Count != downLoadArray.Count)
             yield return new WaitForSeconds(0.1f);
-        
+
         if (waitQueue.Count > 0)
-            OnDownloadPopup( waitQueue, downLoadArray, fetchSize);
+            OnDownloadPopup(waitQueue, downLoadArray, fetchSize);
 
         call?.Invoke();
     }
@@ -531,7 +540,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         int checkCount = 0;
         if (downloadBundleNameList.Count == 0)
             return;
-        
+
         foreach (string downloadBundleName in downloadBundleNameList)
         {
             if (VersionTable.ContainsKey(downloadBundleName))
@@ -546,7 +555,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
                 }
             }
         }
-        
+
         if (downloadBundleNameList.Count != checkCount)
             Message.LogWarning($"WriteDownloadList _ Not Match Download List Count Check {downloadBundleNameList.Count} / {checkCount}");
         else
@@ -669,9 +678,9 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         call?.Invoke();
     }
 
-#endregion VersionTable
+    #endregion VersionTable
 
-#region NoDownloadBundleCount
+    #region NoDownloadBundleCount
     //로컬 버전 중 다운로드 되어있지 않은 번들 개수 반환
     public void NoDownloadBundleCount(Action<int> call)
     {
@@ -708,9 +717,9 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         }
         return downloadBundleList.Count;
     }
-#endregion NoDownloadBundleCount
+    #endregion NoDownloadBundleCount
 
-#region Tools
+    #region Tools
 
 
     string ExtractSubstring(string inputString)
@@ -766,7 +775,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         {
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
         }
-        
+
         // 권한 요청 결과를 기다림
         while (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
@@ -778,7 +787,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         //{
         //    Directory.CreateDirectory(LocalVersionPath);
         //}
-        call?.Invoke(null,null);
+        call?.Invoke(null, null);
     }
 
 
