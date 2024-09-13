@@ -18,8 +18,6 @@ public class LobbyMain : BaseUI
     {
         Hint,
         Option,
-        //Mail,
-        //Shop,
         Start,
         Reset,
         Next,
@@ -51,20 +49,6 @@ public class LobbyMain : BaseUI
         Last,
     }
 
-    //[SerializeField] PopUpUI shopUIPrefab;
-    //[SerializeField] PopUpUI hintShopUIPrefab;
-    //[SerializeField] PopUpUI mailUIPrefab;
-    //[SerializeField] PopUpUI optionUIPrefab;
-
-    //[SerializeField] GameObject chapterUI;
-
-    TMP_Text hint;
-    TMP_Text gold;
-    TMP_Text ticket;
-    TMP_Text jewel;
-
-    GameObject mailUI;
-    GameObject shopUI;
     GameObject optionUI;
 
     GameObject beforeChoose;
@@ -97,13 +81,10 @@ public class LobbyMain : BaseUI
         chapternum  = 0;
         chapterName = null;
 
-        BindText    (typeof(Texts));
+        //BindText    (typeof(Texts));
         BindButton  (typeof(Buttons));
         BindObject  (typeof(StageState));
 
-        gold    = GetText((int)Texts.MoneyText);
-        ticket  = GetText((int)Texts.TicketText);
-        jewel   = GetText((int)Texts.CashText);
 
         beforeChoose    = GetObject((int)StageState.BeforeChoose);
         middleChoose    = GetObject((int)StageState.MiddleChoose);
@@ -113,7 +94,6 @@ public class LobbyMain : BaseUI
         playButton.onClick.AddListener(PlayChapter);
 
         GetButton((int)Buttons.Hint).onClick.AddListener(PopUpHintUI);
-
         GetButton((int)Buttons.Next).onClick.AddListener(AfterChoice);
         GetButton((int)Buttons.Cancle).onClick.AddListener(BacktoMain);
 
@@ -133,16 +113,10 @@ public class LobbyMain : BaseUI
         });
 
         Button option = GetButton((int)Buttons.Option);
-        //Button mail = GetButton((int)Buttons.Mail);
-        //Button shop = GetButton((int)Buttons.Shop);
 
         option.onClick.AddListener(PopUpOptionUI);
-        //mail.onClick.AddListener(PopUpMailUI);
-        //shop.onClick.AddListener(PopUpShopUI);
 
         optionUI = option.gameObject;
-        //mailUI = mail.gameObject;
-        //shopUI = shop.gameObject;
 
         middles = new GameObject[] 
         {
@@ -174,13 +148,13 @@ public class LobbyMain : BaseUI
         else
         {
             string bundleName = $"chapter{string.Format("{0:D2}", chapternum)}";
-            //¹øµéÀ» °®°íÀÖ´ÂÁö È®ÀÎ
+            //ë²ˆë“¤ì„ ê°–ê³ ìžˆëŠ”ì§€ í™•ì¸
             Manager.DownLoadBundle.HasBundleCheck(bundleName, (state) =>
             {
-                //ÀÖ´Ù¸é °ÔÀÓ ½ÇÇà
+                //ìžˆë‹¤ë©´ ê²Œìž„ ì‹¤í–‰
                 if (state)
                     PlayGame();
-                else //¾øÀ¸¸é ¹øµé ´Ù¿î·Îµå
+                else //ì—†ìœ¼ë©´ ë²ˆë“¤ ë‹¤ìš´ë¡œë“œ
                     Manager.DownLoadBundle.DownLoad(null,"basic",bundleName);
             });
         }
@@ -240,21 +214,22 @@ public class LobbyMain : BaseUI
         afterChoose.SetActive   (SelectState.Last == state);
     }
 
-    public void PopUpOptionUI()
+    void PopUpOptionUI()
     {
         Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/OutGameOptionPanel"));
     }
-    public void PopUpHintUI()
+
+    void PopUpHintUI()
     {
         Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/HintShopUI"));
     }
 
-    public void PopUpShopUI()
+    void PopUpShopUI()
     {
         Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/ShopUI"));
     }
 
-    public void PopUpMailUI()
+    void PopUpMailUI()
     {
         Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/MailPortUI"));
     }

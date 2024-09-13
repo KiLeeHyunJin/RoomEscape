@@ -14,10 +14,12 @@ public class BackendManager : Singleton<BackendManager>
 
     }
 
+   
+
     private void Update()
     {
         //서버의 비동기 메소드 호출(콜백 함수 풀링)을 위해 작성
-        if (Backend.IsInitialized == true)
+        if (Backend.IsInitialized)
         {
             Backend.AsyncPoll();
         }
