@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
-using static UserGameData;
 
 public class LobbyScenario : MonoBehaviour
 {
@@ -43,7 +38,7 @@ public class LobbyScenario : MonoBehaviour
         //서버에서 데이터 로드
         //서버 데이터로 최신화하기 위함이 아닌 GameDataUpdate();를 사용하기 위해 게임정보의고유값(inDate)을 불러오는 용도
         //BackendGameData.Instance.GameDataLoad();
-     }
+    }
 
     [ContextMenu("ClearPopup")]
     public void ShowTuto()

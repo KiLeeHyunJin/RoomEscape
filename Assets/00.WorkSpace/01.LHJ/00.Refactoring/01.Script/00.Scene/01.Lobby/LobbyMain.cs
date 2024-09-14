@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,15 +12,14 @@ public class LobbyMain : BaseUI
 
     enum Buttons
     {
-        Hint,
-        Option,
-        Start,
-        Reset,
-        Next,
-        Cancle,
-        Chapter0Button,
-        Chapter01Button,
-        Chapter02Button,
+        OptionUI,
+        AlbumUI,
+
+        SelectEnterBtn,
+        SelectBackBtn,
+
+        SelectReadyBtn,
+        SelectReturnBtn,
     }
 
     enum StageState
@@ -33,13 +28,9 @@ public class LobbyMain : BaseUI
         MiddleChoose,
         AfterChoose,
 
-        Chapter0Story,
-        Chapter1Story,
-        Chapter2Story,
-
-        Chapter00Sign,
-        Chapter01Sign,
-        Chapter02Sign,
+        ChapterFront,
+        ChapterInfo,
+        ChapterReady,
     }
 
     enum SelectState
@@ -50,6 +41,7 @@ public class LobbyMain : BaseUI
     }
 
     GameObject optionUI;
+    GameObject albumUI;
 
     GameObject beforeChoose;
     GameObject middleChoose;
@@ -60,16 +52,20 @@ public class LobbyMain : BaseUI
 
     Button playButton;
 
-    [SerializeField] int chapternum;
-    [SerializeField] string chapterName;
+    [SerializeField] PopUpUI prologue;
+    [SerializeField] PopUpUI explain;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    [SerializeField] int chapterCount;
+    [SerializeField] int chapterNum;
+
+    [SerializeField] bool uiState;
+
 
     protected override void Start()
     {
+        if (CheckTutorial())
+            return;
+
         base.Start();
         BacktoMain();
     }
@@ -78,76 +74,88 @@ public class LobbyMain : BaseUI
     {
         if (base.Init() == false)
             return false;
-        chapternum  = 0;
-        chapterName = null;
+        chapterNum = default;
+        uiState = true;
 
-        //BindText    (typeof(Texts));
-        BindButton  (typeof(Buttons));
-        BindObject  (typeof(StageState));
+        BindButton(typeof(Buttons));
+        BindObject(typeof(StageState));
 
+        GetButton((int)Buttons.SelectReadyBtn)  .onClick.AddListener(AfterChoice);
+        GetButton((int)Buttons.SelectReturnBtn) .onClick.AddListener(BacktoMain);
+        GetButton((int)Buttons.SelectBackBtn)   .onClick.AddListener(BacktoMain);
+
+        Button option   = GetButton((int)Buttons.OptionUI);
+        Button album    = GetButton((int)Buttons.AlbumUI);
+
+        option  .onClick.AddListener(() => ShowPopUpUI("UI/Popup/Lobby/OutGameOptionPanel"));
+        album   .onClick.AddListener(() => ShowPopUpUI("UI/Popup/Lobby/AlbumUI"));
+
+        optionUI    = option.gameObject;
+        albumUI     = album.gameObject;
+
+        playButton = GetButton((int)Buttons.SelectEnterBtn);
+        playButton.onClick.AddListener(PlayChapter);
+
+        InitChapterUI();
+
+        return true;
+    }
+
+    void InitChapterUI()
+    {
+        middles     = new GameObject[chapterCount];
+        chapters    = new GameObject[chapterCount];
+
+        FrontChapterUI frontUI  = Manager.Resource.Load<FrontChapterUI>("UI/Popup/Lobby/Before_Chapter0");
+        ChapterInfoUI InfoUI    = Manager.Resource.Load<ChapterInfoUI>("UI/Popup/Lobby/Info_Chapter0");
+        ChapterReadyUI readyUI  = Manager.Resource.Load<ChapterReadyUI>("UI/Popup/Lobby/Select_Chapter0");
+
+        GameObject front    = GetObject((int)StageState.ChapterFront);
+        GameObject info     = GetObject((int)StageState.ChapterInfo);
+        GameObject ready    = GetObject((int)StageState.ChapterReady);
+
+        FrontChapterUI  instantiateFront;
+        ChapterInfoUI   instantiateInfo;
+        ChapterReadyUI  instantiateReady;
+
+        for (int i = 0; i < chapterCount; i++)
+        {
+            instantiateFront = GameObject.Instantiate(frontUI, front.transform, true);
+            instantiateFront.gameObject.name = $"Before_Chapter0{i}";
+            instantiateFront.Init(ChoiceChapterNum, i * 1000, i);
+
+            instantiateInfo = GameObject.Instantiate(InfoUI, info.transform, true);
+            instantiateInfo.gameObject.name = $"Info_Chapter0{i}";
+            (instantiateInfo.transform as RectTransform).anchoredPosition = Vector2.one;
+            instantiateInfo.transform.localScale = Vector3.one;
+            instantiateInfo.gameObject.SetActive(false);
+            middles[i] = instantiateInfo.gameObject;
+
+            instantiateReady = GameObject.Instantiate(readyUI, ready.transform, true);
+            instantiateReady.gameObject.name = $"Select_Chapter0{i}";
+            (instantiateReady.transform as RectTransform).anchoredPosition = Vector2.one;
+            instantiateReady.transform.localScale = Vector3.one;
+            instantiateReady.gameObject.SetActive(false);
+            chapters[i] = instantiateReady.gameObject;
+        }
 
         beforeChoose    = GetObject((int)StageState.BeforeChoose);
         middleChoose    = GetObject((int)StageState.MiddleChoose);
         afterChoose     = GetObject((int)StageState.AfterChoose);
 
-        playButton      = GetButton((int)Buttons.Start);
-        playButton.onClick.AddListener(PlayChapter);
+        middleChoose.SetActive(false);
+        afterChoose .SetActive(false);
 
-        GetButton((int)Buttons.Hint).onClick.AddListener(PopUpHintUI);
-        GetButton((int)Buttons.Next).onClick.AddListener(AfterChoice);
-        GetButton((int)Buttons.Cancle).onClick.AddListener(BacktoMain);
-
-        GetButton((int)Buttons.Reset).onClick.AddListener(BacktoMain);
-
-        GetButton((int)Buttons.Chapter0Button).onClick.AddListener(()=>
-        {
-            ChoiceChapterNum(0 , "Chapter0Scene");
-        });
-        GetButton((int)Buttons.Chapter01Button).onClick.AddListener(() =>
-        {
-            ChoiceChapterNum(1, "Chapter1Scene");
-        });
-        GetButton((int)Buttons.Chapter02Button).onClick.AddListener(() =>
-        {
-            ChoiceChapterNum(2, "Chapter2Scene");
-        });
-
-        Button option = GetButton((int)Buttons.Option);
-
-        option.onClick.AddListener(PopUpOptionUI);
-
-        optionUI = option.gameObject;
-
-        middles = new GameObject[] 
-        {
-            GetObject((int)StageState.Chapter00Sign),
-            GetObject((int)StageState.Chapter01Sign),
-            GetObject((int)StageState.Chapter02Sign)
-        };
-
-        chapters = new GameObject[]
-        {
-            GetObject((int)StageState.Chapter0Story),
-            GetObject((int)StageState.Chapter1Story),
-            GetObject((int)StageState.Chapter2Story)
-        };
-
-        return true;
-    }
-
-    void PlayGame()
-    {
-        playButton.interactable = false;
-        Manager.Scene.LoadScene(chapterName);
+        Manager.Text.TextChange();
     }
 
     void PlayChapter()
     {
-        if (chapternum == 0)
+        if (chapterNum == 0)
             PlayGame();
         else
         {
-            string bundleName = $"chapter{string.Format("{0:D2}", chapternum)}";
+            string bundleName = $"chapter{string.Format("{0:D2}", chapterNum + 1)}";
             //번들을 갖고있는지 확인
             Manager.DownLoadBundle.HasBundleCheck(bundleName, (state) =>
             {
@@ -155,82 +163,108 @@ public class LobbyMain : BaseUI
                 if (state)
                     PlayGame();
                 else //없으면 번들 다운로드
-                    Manager.DownLoadBundle.DownLoad(null,"basic",bundleName);
+                    Manager.DownLoadBundle.DownLoad(null, "basic", bundleName);
             });
         }
     }
 
-    void ChoiceChapterNum(int i, string name)
+
+    void ChoiceChapterNum(int i)
     {
-        ShowStageState(SelectState.Middle);
-        ShowRightButtons(false);
-
-        chapterName = name;
-        chapternum  = i;
-        Manager.Chapter.chapter = i;
-
-        middles[chapternum].SetActive(true);
-        Manager.Text.TextChange();
+        chapterNum = i;
+        ChangeStageState(SelectState.Middle);
+        
+        middles[chapterNum].SetActive(true);
     }
 
     void AfterChoice()
     {
-        ShowStageState(SelectState.Last);
+        ChangeStageState(SelectState.Last);
 
-        chapters[chapternum].SetActive(true);
-        Manager.Text.TextChange();
+        chapters[chapterNum].SetActive(true);
     }
 
     void BacktoMain()
     {
-        ShowStageState(SelectState.First);
-        ShowRightButtons(true);
+        ChangeStageState(SelectState.First);
 
-        middles[chapternum].SetActive(false);
+        middles[chapterNum] .SetActive(false);
+        chapters[chapterNum].SetActive(false);
 
-        chapters[chapternum].SetActive(false);
-        Manager.Text.TextChange();
+        chapterNum = -1;
     }
 
     public void BackToMiddle()
     {
         middleChoose.SetActive(true);
-        afterChoose.SetActive(false);
+        afterChoose .SetActive(false);
 
         Manager.Text.TextChange();
     }
 
-    void ShowRightButtons(bool state)
+    void ChangeStageState(SelectState state)
     {
-        optionUI.SetActive(state);
-        //mailUI.SetActive(state);
-        //shopUI.SetActive(state);
+        bool isFirst = SelectState.First == state;
+        ShowUIButtons(isFirst);
+
+        beforeChoose.SetActive(isFirst);
+        middleChoose.SetActive(SelectState.Middle == state);
+        afterChoose .SetActive(SelectState.Last == state);
+
+        if(isFirst == false)
+        {
+            Manager.Text.TextChange();
+        }
     }
 
-    void ShowStageState(SelectState state)
+    void ShowUIButtons(bool state)
     {
-        beforeChoose.SetActive  (SelectState.First == state);
-        middleChoose.SetActive  (SelectState.Middle == state);
-        afterChoose.SetActive   (SelectState.Last == state);
+        if(uiState == state)
+            return;
+
+        uiState = state;
+        optionUI.SetActive(uiState);
+        albumUI .SetActive(uiState);
     }
 
-    void PopUpOptionUI()
+    void ShowPopUpUI(string path)
     {
-        Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/OutGameOptionPanel"));
+        Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>(path));
     }
 
-    void PopUpHintUI()
+
+
+    void PlayGame()
     {
-        Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/HintShopUI"));
+        playButton.interactable = false;
+        Manager.Chapter.chapter = chapterNum;
+        Manager.Scene.LoadScene("InGameScene");
     }
 
-    void PopUpShopUI()
+    bool CheckTutorial()
     {
-        Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/ShopUI"));
+#if UNITY_EDITOR
+        return false;
+#endif
+        UserGameData userGameData = Manager.Data.UserGameData;
+
+        int chapterState = userGameData.chapter;
+        if (chapterState == 0)//튜토리얼 실행 메서드 추가
+        {
+            Manager.UI.ShowPopUpUI(prologue);
+            return true;
+        }
+        if (userGameData.lobbyInfo)// 로비 첫 진입시 챕터슬라이드 설명 팝업
+        {
+            Message.Log($"lobbyInfo : {userGameData.lobbyInfo}");
+            Manager.UI.ShowPopUpUI(explain);
+        }
+        return false;
     }
 
-    void PopUpMailUI()
+    [ContextMenu("ClearPopup")]
+    public void ShowTuto()
     {
-        Manager.UI.ShowPopUpUI(Manager.Resource.Load<PopUpUI>($"UI/Popup/Work/MailPortUI"));
+        Manager.UI.ShowPopUpUI(prologue);
     }
 }
