@@ -8,9 +8,9 @@ public class ChapterReadyUI : MonoBehaviour
 {
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI title;
-    public void Init(Sprite _icon,int _titleId)
+    public void Init(Sprite icon,int titleId)
     {
-        title.name = _titleId.ToString();
-        icon.sprite = _icon;
+        this.title.name = titleId.ToString();
+        this.icon.sprite = icon;
     }
 }

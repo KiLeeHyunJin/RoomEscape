@@ -48,8 +48,8 @@ public class LobbyMain : BaseUI
     GameObject middleChoose;
     GameObject afterChoose;
     
-    ChapterInfoUI Info;
-    ChapterReadyUI Ready;
+    ChapterInfoUI infoUI;
+    ChapterReadyUI readyUI;
 
     Button playButton;
     Action swipeAction;
@@ -92,13 +92,13 @@ public class LobbyMain : BaseUI
         Button album    = GetButton((int)Buttons.AlbumUI);
 
         option  .onClick.AddListener(() => ShowPopUpUI("UI/Popup/Lobby/OutGameOptionPanel"));
-        album   .onClick.AddListener(() => ShowPopUpUI("UI/Popup/Lobby/AlbumUI"));
+        album   .onClick.AddListener(() => ShowPopUpUI("UI/Popup/Lobby/AlbumOrGame"));
 
         optionUI    = option.gameObject;
         albumUI     = album.gameObject;
 
         playButton = GetButton((int)Buttons.SelectEnterBtn);
-        playButton.onClick.AddListener(PlayChapter);
+        this.playButton.onClick.AddListener(PlayChapter);
 
         InitChapterUI();
 
@@ -107,35 +107,39 @@ public class LobbyMain : BaseUI
 
     void InitChapterUI()
     {
-        FrontChapterUI frontUI  = Manager.Resource.Load<FrontChapterUI>("UI/Popup/Lobby/Before_Chapter0");
-        ChapterInfoUI InfoUI    = Manager.Resource.Load<ChapterInfoUI>("UI/Popup/Lobby/Info_Chapter0");
-        ChapterReadyUI readyUI  = Manager.Resource.Load<ChapterReadyUI>("UI/Popup/Lobby/Select_Chapter0");
+        FrontChapterUI load_frontUI  = Manager.Resource.Load<FrontChapterUI>("UI/Popup/Lobby/Before_Chapter0");
+        ChapterInfoUI load_infoUI    = Manager.Resource.Load<ChapterInfoUI>("UI/Popup/Lobby/Info_Chapter0");
+        ChapterReadyUI load_readyUI  = Manager.Resource.Load<ChapterReadyUI>("UI/Popup/Lobby/Select_Chapter0");
 
-        GameObject front    = GetObject((int)StageState.ChapterFront);
-        GameObject info     = GetObject((int)StageState.ChapterInfo);
-        GameObject ready    = GetObject((int)StageState.ChapterReady);
+        GameObject frontParent    = GetObject((int)StageState.ChapterFront);
+        GameObject infoParent     = GetObject((int)StageState.ChapterInfo);
+        GameObject readyParent    = GetObject((int)StageState.ChapterReady);
 
         FrontChapterUI  instantiateFront;
         ChapterInfoData chapterInfoData;
         for (int i = 0; i < chapterCount; i++)
         {
-            instantiateFront = GameObject.Instantiate(frontUI, front.transform, true);
+            instantiateFront = GameObject.Instantiate(load_frontUI, frontParent.transform, true);
             instantiateFront.gameObject.name = $"Before_Chapter0{i}";
             chapterInfoData = chapterData[i];
             instantiateFront.Init(ChoiceChapterNum, chapterInfoData.TitleId, i, chapterInfoData.Icon);
         }
 
-        Info = GameObject.Instantiate(InfoUI, info.transform, true);
-        Info.gameObject.name = $"Info_Chapter";
-        (Info.transform as RectTransform).anchoredPosition = Vector2.one;
-        Info.transform.localScale = Vector3.one;
+        Transform uiTransform;
 
-        Ready = GameObject.Instantiate(readyUI, ready.transform, true);
-        Ready.gameObject.name = $"Select_Chapter";
-        (Ready.transform as RectTransform).anchoredPosition = Vector2.one;
-        Ready.transform.localScale = Vector3.one;
+        infoUI = GameObject.Instantiate(load_infoUI, infoParent.transform, true);
+        infoUI.gameObject.name = $"Info_Chapter";
+        uiTransform = infoUI.transform;
+        (uiTransform as RectTransform).anchoredPosition = Vector2.one;
+        uiTransform.localScale = Vector3.one;
 
-        SwipeController swipeController = front.GetComponent<SwipeController>();
+        readyUI = GameObject.Instantiate(load_readyUI, readyParent.transform, true);
+        readyUI.gameObject.name = $"Select_Chapter";
+        uiTransform = readyUI.transform;
+        (uiTransform as RectTransform).anchoredPosition = Vector2.one;
+        uiTransform.localScale = Vector3.one;
+
+        SwipeController swipeController = frontParent.GetComponent<SwipeController>();
         swipeAction = swipeController.FocusOn;
         swipeController.Init(chapterCount);
 
@@ -143,8 +147,8 @@ public class LobbyMain : BaseUI
         middleChoose    = GetObject((int)StageState.MiddleChoose);
         afterChoose     = GetObject((int)StageState.AfterChoose);
 
-        middleChoose.SetActive(false);
-        afterChoose .SetActive(false);
+        this.middleChoose.SetActive(false);
+        this.afterChoose .SetActive(false);
 
         Manager.Text.TextChange();
     }
@@ -168,6 +172,12 @@ public class LobbyMain : BaseUI
         }
     }
 
+    void PlayGame()
+    {
+        this.playButton.interactable = false;
+        Manager.Chapter.chapter = chapterNum;
+        Manager.Scene.LoadScene("InGameScene");
+    }
 
     void ChoiceChapterNum(int i)
     {
@@ -175,7 +185,7 @@ public class LobbyMain : BaseUI
         ChangeStageState(SelectState.Middle);
 
         ChapterInfoData infoData = chapterData[chapterNum];
-        Info.Init(infoData.TitleId, infoData.DescriptionId);
+        infoUI.Init(infoData.TitleId, infoData.DescriptionId);
 
         Manager.Text.TextChange();
     }
@@ -185,7 +195,7 @@ public class LobbyMain : BaseUI
         ChangeStageState(SelectState.Last);
 
         ChapterInfoData infoData = chapterData[chapterNum];
-        Ready.Init(infoData.Icon, infoData.TitleId);
+        readyUI.Init(infoData.Icon, infoData.TitleId);
 
         Manager.Text.TextChange();
     }
@@ -193,16 +203,8 @@ public class LobbyMain : BaseUI
     void BacktoMain()
     {
         ChangeStageState(SelectState.First);
-        swipeAction.Invoke();
+        this.swipeAction.Invoke();
         chapterNum = -1;
-    }
-
-    public void BackToMiddle()
-    {
-        middleChoose.SetActive(true);
-        afterChoose .SetActive(false);
-
-        Manager.Text.TextChange();
     }
 
     void ChangeStageState(SelectState state)
@@ -210,9 +212,9 @@ public class LobbyMain : BaseUI
         bool isFirst = SelectState.First == state;
         ShowUIButtons(isFirst);
 
-        beforeChoose.SetActive(isFirst);
-        middleChoose.SetActive(SelectState.Middle == state);
-        afterChoose .SetActive(SelectState.Last == state);
+        this.beforeChoose.SetActive(isFirst);
+        this.middleChoose.SetActive(SelectState.Middle == state);
+        this.afterChoose .SetActive(SelectState.Last == state);
     }
 
     void ShowUIButtons(bool state)
@@ -221,8 +223,8 @@ public class LobbyMain : BaseUI
             return;
 
         uiState = state;
-        optionUI.SetActive(uiState);
-        albumUI .SetActive(uiState);
+        this.optionUI.SetActive(uiState);
+        this.albumUI .SetActive(uiState);
     }
 
     void ShowPopUpUI(string path)
@@ -231,13 +233,6 @@ public class LobbyMain : BaseUI
     }
 
 
-
-    void PlayGame()
-    {
-        playButton.interactable = false;
-        Manager.Chapter.chapter = chapterNum;
-        Manager.Scene.LoadScene("InGameScene");
-    }
 
     bool CheckTutorial()
     {

@@ -44,9 +44,6 @@ public class BaseUI : MonoBehaviour
         }
     }
 
-
-
-
     protected void BindObject(Type type) { Bind<GameObject>(type); }
     protected void BindImage(Type type) { Bind<Image>(type); }
     protected void BindText(Type type) { Bind<TextMeshProUGUI>(type); }

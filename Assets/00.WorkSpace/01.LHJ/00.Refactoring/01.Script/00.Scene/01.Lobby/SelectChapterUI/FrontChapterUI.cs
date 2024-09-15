@@ -11,11 +11,15 @@ public class FrontChapterUI : MonoBehaviour
     [SerializeField] Button chapterSelectBtn;
     [SerializeField] Image downloadIcon;
     [SerializeField] Image icon;
-    public void Init(Action<int> selectBtnEventMethod, int textId, int chapterNum, Sprite _icon)
+    int chapterNum;
+    public void Init(Action<int> selectBtnEventMethod, int textId, int chapterNum, Sprite icon)
     {
+        this.icon.sprite = icon;
+        this.chapterNum = chapterNum;
+
         chapterSelectBtn.onClick.AddListener(() => { selectBtnEventMethod.Invoke(chapterNum); });
         chapterNameTxt.gameObject.name = textId.ToString();
-        icon.sprite = _icon;
+
         UpdateDownloadState();
     }
 

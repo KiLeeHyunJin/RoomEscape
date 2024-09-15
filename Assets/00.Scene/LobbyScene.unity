@@ -748,22 +748,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &651226222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128113684166276876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccedd5e13797d6b4fbd7fa78036408b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopUIPrefab: {fileID: 5300719211034090668, guid: dc8f067f006ce264c82994e740fd10a6, type: 3}
-  hintShopUIPrefab: {fileID: 907415063275051590, guid: e02de97fe0c605c4e815068998ad30f4, type: 3}
-  albumUIPrefab: {fileID: 8994199087626874788, guid: eef041009c9e2df40a7c851fe503fe91, type: 3}
-  optionUIPrefab: {fileID: 5587085730810318791, guid: 599c88519e08307498f1ea61bf5ac2cf, type: 3}
 --- !u!1 &737536666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,19 +2322,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1667246565}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 651226222}
-        m_TargetAssemblyTypeName: FixedUI, Assembly-CSharp
-        m_MethodName: PopUpAlbumUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1667246565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,7 +3202,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128113684166276877}
-  - component: {fileID: 651226222}
   m_Layer: 5
   m_Name: LobbyUI
   m_TagString: Untagged
@@ -3311,19 +3282,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 128113685019169351}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 651226222}
-        m_TargetAssemblyTypeName: FixedUI, Assembly-CSharp
-        m_MethodName: PopUPOptionUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &128113685019169351
 MonoBehaviour:
   m_ObjectHideFlags: 0
