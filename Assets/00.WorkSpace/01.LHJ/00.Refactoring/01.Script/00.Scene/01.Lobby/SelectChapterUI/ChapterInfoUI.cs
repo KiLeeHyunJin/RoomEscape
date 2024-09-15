@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ChapterInfoUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] TextMeshProUGUI title;
+    [SerializeField] TextMeshProUGUI description;
+    public void Init(int titleId, int infoId)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        title.name = titleId.ToString();
+        description.name = infoId.ToString();
     }
 }

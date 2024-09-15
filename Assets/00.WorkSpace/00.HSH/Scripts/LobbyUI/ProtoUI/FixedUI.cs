@@ -33,6 +33,5 @@ public class FixedUI : MonoBehaviour
         {
             Manager.Data.SetChapterData(i+1, (true, null));
         }
-        
     }
 }

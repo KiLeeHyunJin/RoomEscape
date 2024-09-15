@@ -5,6 +5,5 @@ using UnityEngine;
 public class SelectChapterUI : MonoBehaviour
 {
     [SerializeField] LobbyMain lobbyMain;
-
-
+    
 }

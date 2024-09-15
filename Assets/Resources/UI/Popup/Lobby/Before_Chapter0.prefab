@@ -253,6 +253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapterNameTxt: {fileID: 1842776806380609549}
   chapterSelectBtn: {fileID: 1842776804905687481}
+  downloadIcon: {fileID: 1842776806266675264}
+  icon: {fileID: 1842776804905687482}
 --- !u!1 &1842776805644568272
 GameObject:
   m_ObjectHideFlags: 0
