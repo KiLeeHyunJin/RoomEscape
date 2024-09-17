@@ -164,13 +164,13 @@ public class LobbyMain : BaseUI
         {
             string bundleName = $"chapter{string.Format("{0:D2}", chapterNum + 1)}";
             //번들을 갖고있는지 확인
-            Manager.DownLoadBundle.HasBundleCheck(bundleName, (state) =>
+            Manager.DownLoadBundle.HasBundle(bundleName, (state) =>
             {
                 //있다면 게임 실행
                 if (state)
                     PlayGame();
                 else //없으면 번들 다운로드
-                    Manager.DownLoadBundle.DownLoad(null, "basic", bundleName);
+                    Manager.DownLoadBundle.DownLoadPopUp(null, "basic", bundleName);
             });
         }
     }

@@ -30,7 +30,7 @@ public class ChoiceUI : MonoBehaviour
         for (int i = 0; i < downloadIcon.Length; i++)
         {
             int idx = i;
-            Manager.DownLoadBundle.HasBundleCheck($"{attachBaseName}{idx + 1}", (state) =>
+            Manager.DownLoadBundle.HasBundle($"{attachBaseName}{idx + 1}", (state) =>
             {
                 if (state)
                     downloadIcon[idx].gameObject.SetActive(false);
@@ -99,7 +99,7 @@ public class ChoiceUI : MonoBehaviour
         Manager.Chapter.ContinueState = true;
         string bundleName = $"chapter0{Manager.Chapter.chapter}";
         //Debug.Log($"Check Bundle Num : {bundleName}");
-        Manager.DownLoadBundle.HasBundleCheck(bundleName, (state) =>
+        Manager.DownLoadBundle.HasBundle(bundleName, (state) =>
         {
             if (state) //소지중이라면 
             {
@@ -107,7 +107,7 @@ public class ChoiceUI : MonoBehaviour
             }
             else //번들 소지중이 아니라면 다운로드 팝업 실행
             {
-                Manager.DownLoadBundle.DownLoad(null, "basic", bundleName);
+                Manager.DownLoadBundle.DownLoadPopUp(null, "basic", bundleName);
             }
         });
     }
@@ -128,7 +128,7 @@ public class ChoiceUI : MonoBehaviour
             Debug.Log($"Check Bundle Num : {bundleName}");
             //Utils.ShowInfo($"Check Bundle Num : {bundleName}");
             //에셋 번들을 소지중인지 확인
-            Manager.DownLoadBundle.HasBundleCheck(bundleName, (state) =>
+            Manager.DownLoadBundle.HasBundle(bundleName, (state) =>
             {
                 //Utils.ShowInfo($"Has Bundle State {state}");
                 if (state) //소지중이라면 
@@ -140,7 +140,7 @@ public class ChoiceUI : MonoBehaviour
                 }
                 else //번들 소지중이 아니라면 다운로드 팝업 실행
                 {
-                    Manager.DownLoadBundle.DownLoad(null, "basic", bundleName);
+                    Manager.DownLoadBundle.DownLoadPopUp(null, "basic", bundleName);
                 }
             });
         }
