@@ -10,28 +10,36 @@ using UnityEngine.Networking;
 public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 {
     const string DownloadPath = "https://drive.google.com/uc?export=download&id=";
-    private readonly string serverVersionTableURL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
+    const string serverVersionTableURL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
 
-    //private readonly string localVersionTablePath = "/versionTable.csv"; // 로컬 버전 테이블 경로
+    const string localVersionTablePath = "/versionTable.csv"; // 로컬 버전 테이블 경로
     string LocalVersionPath { get { return Manager.Data.DataPath; } }
 
     Dictionary<string, string[]> localVersionTable;
-    Dictionary<string, string[]> VersionTable { get { return localVersionTable; } }
-
-    bool localLoad;
-    bool serverLoad;
+    Dictionary<string, string[]> serverVersionTable;
+    Dictionary<string, string[]> VersionTable 
+    { 
+        get 
+        {
+            if (serverVersionTable != null)
+                return serverVersionTable;
+            if (localVersionTable != null)
+                return localVersionTable;
+            return null;
+        } 
+    }
 
     PlayerBeforeCheckPopup instancePopupUI;
     [SerializeField] DownLoadUI downLoadUI;
 
+
     string titleText;
     string detailText;
+    
     protected override void Awake()
     {
         base.Awake();
-        localLoad = default;
-        serverLoad = default;
-        StartCoroutine(CreateDirectory(VersionRefresh));
+        StartCoroutine(CreateDirectory(LoadToServerVersion));
     }
 
     Coroutine checking;
@@ -121,7 +129,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
                     else
                     {
                         //버전 쳌
-                        VersionRefresh((refreshState) =>
+                        LoadToServerVersion((refreshState) =>
                         {
                             //포함 확인
                             IncludeCurrentTableVersionCheck(bundleName, (reCheckNameState) =>
@@ -259,7 +267,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     {
         if (localVersionTable == null)
         {
-            VersionRefresh((refreshState) =>
+            LoadToServerVersion((refreshState) =>
             {
                 if (refreshState)
                 {
@@ -323,7 +331,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             call?.Invoke(state);
             return;
         }
-        VersionRefresh((refreshState) =>
+        LoadToServerVersion((refreshState) =>
         {
             bool state = VersionTable.ContainsKey(bundleName);
             if (refreshState)
@@ -378,7 +386,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         //로컬 테이블이 없다면 
         if (VersionTable == null)
         {
-            VersionRefresh((refeshState) =>
+            LoadToServerVersion((refeshState) =>
             {
                 if (refeshState)
                     DownLoader(downloadFileNameList, call);
@@ -469,7 +477,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     {
         if (VersionTable == null)
         {
-            VersionRefresh((refreshState) =>
+            LoadToServerVersion((refreshState) =>
             {
                 if (refreshState)
                 {
@@ -569,7 +577,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 번들 버전 최신화
     /// </summary>
-    public void VersionRefresh(Action<bool> refeshState = null, Action downloadAction = null)
+    public void LoadToServerVersion(Action<bool> refeshState = null, Action downloadAction = null)
     {
         //if (VersionTable == null)
         //    LoadLocallVersionTable();
@@ -584,9 +592,10 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
                 return;
             }
         }
-        //Utils.ShowInfo("버전 다운로드 실행");
         StartCoroutine(LoadServerVersionTable(refeshState, downloadAction));
     }
+
+
 
     //버전 비교
     //bool VersionCheck()
@@ -616,65 +625,60 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     //    return isDownload;
     //}
 
-    //로컬 데이터 불러오기
-    //void LoadLocallVersionTable()
-    //{
-    //    //Utils.ShowInfo("LoadLocallVersionTable");
-    //    if (System.IO.Directory.Exists($"{LocalVersionPath}{localVersionTablePath}"))
-    //    {
-    //        //Utils.ShowInfo("Exists(localVersionTable) == true");
-    //        /*TextAsset localVersion = Resources.Load<TextAsset>*/
-    //        string localVersion = System.IO.File.ReadAllText($"{LocalVersionPath}{localVersionTablePath}");
-    //        if (localVersion != null)
-    //        {
-    //            //Utils.ShowInfo("localVersion != null");
-    //            string[] rows = localVersion.Split('\n');
-    //            int length = rows.Length;
+    /// <summary>
+    /// 로컬 데이터 불러오기
+    /// </summary>
+    void LoadToLocalVersion()
+    {
+        //Utils.ShowInfo("LoadLocallVersionTable");
+        if (System.IO.Directory.Exists($"{LocalVersionPath}{localVersionTablePath}"))
+        {
+            string localVersion = System.IO.File.ReadAllText($"{LocalVersionPath}{localVersionTablePath}");
+            if (localVersion != null)
+            {
+                string[] rows = localVersion.Split('\n');
+                int length = rows.Length;
 
-    //            if (VersionTable == null)
-    //                localVersionTable = new(length);
-    //            else
-    //                VersionTable.Clear();
+                if (localVersionTable == null)
+                    localVersionTable = new(length);
+                else
+                    localVersionTable.Clear();
 
-    //            for (int i = 0; i < length; i++)
-    //            {
-    //                string[] versionData = rows[i].Split(',');
-    //                VersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
-    //            }
-    //        }
-    //    }
-    //    else
-    //    {
-    //        //Utils.ShowInfo("{LocalVersionPath}{localVersionTablePath} == null");
-    //    }
-    //    if (localLoad == false)
-    //        localLoad = true;
-    //}
+                for (int i = 0; i < length; i++)
+                {
+                    string[] versionData = rows[i].Split(',');
+                    localVersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
+                }
+            }
+        }
+        else
+        {
+            localVersionTable = null;
+            Message.Log("로컬 데이터가 없습니다.");
+        }
+    }
     //서버 데이터 불러오기 
     IEnumerator LoadServerVersionTable(Action<bool> refeshState, Action call)
     {
-        //Utils.ShowInfo("테이블 다운로드 시작");
         using UnityWebRequest uwr = UnityWebRequest.Get(serverVersionTableURL);
         yield return uwr.SendWebRequest();
-
-        //Utils.ShowInfo("테이블 다운로드 완료");
+       
         string[] rows = uwr.downloadHandler.text.Split('\n');
         int length = rows.Length;
 
-        if (localVersionTable == null)
-            localVersionTable = new();
+        if (serverVersionTable == null)
+            serverVersionTable = new();
         else
-            localVersionTable.Clear();
+            serverVersionTable.Clear();
+
         for (int i = 0; i < length; i++)
         {
             string[] versionData = rows[i].Split(',');
-            localVersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
+            serverVersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
         }
 
-        if (serverLoad == false)
-            serverLoad = true;
 
-        refeshState?.Invoke(localVersionTable != null);
+        refeshState?.Invoke(serverVersionTable != null);
         call?.Invoke();
     }
 
@@ -686,7 +690,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     {
         if (localVersionTable == null)
         {
-            VersionRefresh((versionState) =>
+            LoadToServerVersion((versionState) =>
             {
                 if (versionState == false)
                 {

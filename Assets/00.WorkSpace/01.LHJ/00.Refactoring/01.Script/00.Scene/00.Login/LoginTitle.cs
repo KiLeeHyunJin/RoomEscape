@@ -33,6 +33,7 @@ public class LoginTitle : BaseUI
     }
 
     TMP_Text errorMassege;
+    GameFlow flowManager;
     string ErrorMassege 
     { 
         set 
@@ -41,6 +42,12 @@ public class LoginTitle : BaseUI
                 errorMassege.gameObject.SetActive(true);
             errorMassege.text = value;
         } 
+    }
+
+    protected override void Awake()
+    {
+        flowManager = FindObjectOfType<GameFlow>();
+        flowManager.ChangeGameScene(GameFlow.GameState.Login);
     }
 
     protected override void Start()
@@ -76,9 +83,11 @@ public class LoginTitle : BaseUI
     {
         ErrorMassege = "준비중인 기능입니다.";
     }
+
     void ChangeScene()
     {
-        Manager.Scene.LoadScene("LobbyScene");
+        //Manager.Scene.LoadScene("LobbyScene");
+        flowManager.ChangeGameScene(GameFlow.GameState.Lobby);
     }
     void Delete()
     {

@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class GameFlow : MonoBehaviour
 {
-    [SerializeField] BaseUI LoginScene;
+    public enum GameState
+    {
+        Login,
+        Lobby,
+        InGame
+    }
+
+    [SerializeField] GameObject LoginScene;
+    [SerializeField] GameObject LobbyScene;
+    [field: SerializeField] public GameState CurrentState { get; private set; }
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
     }
-    void Start()
+
+    public void ChangeGameScene(GameState changeScene)
     {
-        RemoveManager();
-        Manager.UI.ShowScene("LoginRect");
+        LoginScene.SetActive(GameState.Login == changeScene);
+        LobbyScene.SetActive(GameState.Lobby == changeScene);
+        CurrentState = changeScene;
     }
 
-
-    void RemoveManager()
-    {
-        //SceneManager.ReleaseInstance();
-    }
 }

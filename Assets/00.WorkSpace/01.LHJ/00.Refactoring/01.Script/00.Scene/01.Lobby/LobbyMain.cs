@@ -51,6 +51,8 @@ public class LobbyMain : BaseUI
     ChapterInfoUI infoUI;
     ChapterReadyUI readyUI;
 
+    GameFlow flowManager;
+
     Button playButton;
     Action swipeAction;
 
@@ -72,6 +74,7 @@ public class LobbyMain : BaseUI
 
         base.Start();
         BacktoMain();
+        flowManager = FindObjectOfType<GameFlow>();
     }
 
     public override bool Init()
@@ -107,7 +110,7 @@ public class LobbyMain : BaseUI
 
     void InitChapterUI()
     {
-        FrontChapterUI load_frontUI  = Manager.Resource.Load<FrontChapterUI>("UI/Popup/Lobby/Before_Chapter0");
+        ChapterFrontUI load_frontUI  = Manager.Resource.Load<ChapterFrontUI>("UI/Popup/Lobby/Before_Chapter0");
         ChapterInfoUI load_infoUI    = Manager.Resource.Load<ChapterInfoUI>("UI/Popup/Lobby/Info_Chapter0");
         ChapterReadyUI load_readyUI  = Manager.Resource.Load<ChapterReadyUI>("UI/Popup/Lobby/Select_Chapter0");
 
@@ -115,7 +118,7 @@ public class LobbyMain : BaseUI
         GameObject infoParent     = GetObject((int)StageState.ChapterInfo);
         GameObject readyParent    = GetObject((int)StageState.ChapterReady);
 
-        FrontChapterUI  instantiateFront;
+        ChapterFrontUI  instantiateFront;
         ChapterInfoData chapterInfoData;
         for (int i = 0; i < chapterCount; i++)
         {
@@ -177,6 +180,7 @@ public class LobbyMain : BaseUI
         this.playButton.interactable = false;
         Manager.Chapter.chapter = chapterNum;
         Manager.Scene.LoadScene("InGameScene");
+        //flowManager.ChangeGameScene(GameFlow.GameState.InGame);
     }
 
     void ChoiceChapterNum(int i)

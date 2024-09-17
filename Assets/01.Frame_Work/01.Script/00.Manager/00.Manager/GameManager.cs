@@ -6,6 +6,7 @@ using Unity;
 public class GameManager : Singleton<GameManager>
 {
 
+
     [SerializeField] PopUpUI gameOverPopUpUI;
     [SerializeField] PopUpUI gameClearPopUpUI;
     //제한시간

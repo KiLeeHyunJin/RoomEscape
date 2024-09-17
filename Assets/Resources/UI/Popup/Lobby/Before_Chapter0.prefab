@@ -122,31 +122,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1842776804905687482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ChoiceUI, Assembly-CSharp
-        m_MethodName: ChoiceChapterNum
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Chapter1Scene
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ChoiceUI, Assembly-CSharp
-        m_MethodName: ChoiceChapterName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Chapter0Scene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1842776804905687484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +147,7 @@ GameObject:
   - component: {fileID: 1842776805275017752}
   - component: {fileID: 1842776805275017754}
   - component: {fileID: 1842776805275017753}
-  - component: {fileID: 219350638886750768}
+  - component: {fileID: 332083473337062773}
   m_Layer: 5
   m_Name: Before_Chapter0
   m_TagString: Untagged
@@ -239,7 +215,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &219350638886750768
+--- !u!114 &332083473337062773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

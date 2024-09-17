@@ -5,25 +5,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FrontChapterUI : MonoBehaviour
+public class ChapterFrontUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI chapterNameTxt;
     [SerializeField] Button chapterSelectBtn;
     [SerializeField] Image downloadIcon;
-    [SerializeField] Image icon;
     int chapterNum;
     public void Init(Action<int> selectBtnEventMethod, int textId, int chapterNum, Sprite icon)
     {
-        this.icon.sprite = icon;
         this.chapterNum = chapterNum;
-
-        chapterSelectBtn.onClick.AddListener(() => { selectBtnEventMethod.Invoke(chapterNum); });
+        chapterSelectBtn.image.sprite = icon;
+        chapterSelectBtn.onClick.AddListener(() => { selectBtnEventMethod.Invoke(this.chapterNum); });
         chapterNameTxt.gameObject.name = textId.ToString();
 
-        UpdateDownloadState();
+        UpdateDownloadIconState();
     }
 
-    public void UpdateDownloadState()
+    public void UpdateDownloadIconState()
     {
 
     }

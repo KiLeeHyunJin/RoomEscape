@@ -42,7 +42,6 @@ public static class Manager
         BackendManager.CreateInstance();
         InventoryManager.CreateInstance();
         ChapterManager.CreateInstance();
-        //AssetBundleManager.CreateInstance();
         TextManager.CreateInstance();
         DownLoadBundleManager.CreateInstance();
     }
