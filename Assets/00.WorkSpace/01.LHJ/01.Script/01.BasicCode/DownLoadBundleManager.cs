@@ -333,7 +333,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 
 
         //번들 로드
-        UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(url, Hash128.Parse(bundleData[(int)VersionTableColumn.Version]);
+        UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(url, Hash128.Parse(bundleData[(int)VersionTableColumn.Version]));
         yield return tupleUwr.SendWebRequest();//DownLoadRoutine(tupleUwr);
 
         if (tupleUwr.result == UnityWebRequest.Result.Success)
