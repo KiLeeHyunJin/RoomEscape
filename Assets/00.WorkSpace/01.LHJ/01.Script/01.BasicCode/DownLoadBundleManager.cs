@@ -122,7 +122,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 번들이 있으면 로드하고 없으면 다운로드 후 로드
     /// </summary>
-    public void GetLoadOrDownloadBundle(string bundleName, Action<AssetBundle> bundleCall)
+    public void GetLoadOrDownloadBundle(string bundleName, Action<AssetBundle> bundleCall)          //수정 필요
     {
         //파일을 갖고있는지 확인
         HasBundle(bundleName, (state) =>
@@ -174,14 +174,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         BackendChartData.logChart.TryGetValue(171, out LogChartData logChartData);
         if (logChartData != null)
         {
-            if (Manager.Text._Iskr == true)
-            {
-                detailText = logChartData.korean;
-            }
-            else
-            {
-                detailText = logChartData.english;
-            }
+            detailText = Manager.Text._Iskr ?
+                logChartData.korean : logChartData.english;
         }
         int datailTextNum = Manager.Chapter.chapter switch
         {
@@ -195,14 +189,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         BackendChartData.logChart.TryGetValue(datailTextNum, out LogChartData logChartData2);
         if (logChartData != null)
         {
-            if (Manager.Text._Iskr == true)
-            {
-                titleText = logChartData2.korean;
-            }
-            else
-            {
-                titleText = logChartData2.english;
-            }
+            titleText = Manager.Text._Iskr ? 
+                logChartData2.korean : logChartData2.english;
         }
         instancePopupUI.InitText(titleText, detailText);
     }
@@ -232,7 +220,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 해당 번들이 다운로드되어있는지 확인 후 콜백
     /// </summary>
-    public void HasBundle(string bundleFileName, Action<bool> stateCall)
+    public void HasBundle(string bundleFileName, Action<bool> stateCall)        //수정 필요
     {
         if (VersionTable == null)
         {
@@ -297,7 +285,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 해당 번들이 버전에 포함되어있는지 확인
     /// </summary>
-    void IncludeVersionCheck(string bundleName, Action<bool> call)
+    void IncludeVersionCheck(string bundleName, Action<bool> call)               //수정 필요
     {
         if (VersionTable != null)
         {
@@ -343,9 +331,10 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         UnityWebRequest uwr = UnityWebRequest.Head(url);
         yield return uwr.SendWebRequest();
 
+
         //번들 로드
-        UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(url, Hash128.Parse(bundleData[(int)VersionTableColumn.Version]));
-        yield return DownLoadRoutine(tupleUwr);
+        UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(url, Hash128.Parse(bundleData[(int)VersionTableColumn.Version]);
+        yield return tupleUwr.SendWebRequest();//DownLoadRoutine(tupleUwr);
 
         if (tupleUwr.result == UnityWebRequest.Result.Success)
             callBundle?.Invoke(DownloadHandlerAssetBundle.GetContent(tupleUwr));
@@ -416,7 +405,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             if (progressList.Count < parallerSize && waitQueue.Count > 0)
             {
                 var v = waitQueue.Dequeue();
-                StartCoroutine(DownLoadRoutine(v.Item1));
+                yield return v.Item1.SendWebRequest();
+                //StartCoroutine(DownLoadRoutine(v.Item1));
                 progressList.Add(v);
             }
             percentage = default;
@@ -569,7 +559,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            Message.LogWarning("인터넷 끊김 ㄷㄷ");
+            Message.LogWarning("DisConnected Internet");
             refeshState?.Invoke(false);
             return;
         }
