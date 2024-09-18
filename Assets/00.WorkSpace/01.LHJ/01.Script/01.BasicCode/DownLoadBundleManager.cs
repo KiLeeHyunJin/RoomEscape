@@ -9,30 +9,40 @@ using UnityEngine.Networking;
 
 public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 {
-    const string DOWNLOADPATH    = "https://drive.google.com/uc?export=download&id=";
-    const string SERVERVERSIONURL= "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
-    const string LOCALVERSIONURL = "/versionTable.csv"; // 로컬 버전 테이블 경로
-
-    Dictionary<string, string[]> localVersionTable;
-    Dictionary<string, string[]> serverVersionTable;
-    Dictionary<string, string[]> VersionTable 
+    public enum LoadTable
     { 
-        get 
-        {
-            if (serverVersionTable != null)
-                return serverVersionTable;
-            if (localVersionTable != null)
-                return localVersionTable;
-            return null;
-        } 
+        NULL,
+        Local,
+        Server,
     }
+
+    enum VersionTableColumn // 버전 테이블 Column(열) 정보
+    {
+        FileName, // 번들 파일 명
+        Version, // 번들 버전 정보
+        DownloadLink, // 번들 설치 링크
+    }
+
+    const string DOWNLOAD_PATH    = "https://drive.google.com/uc?export=download&id=";
+    const string SERVER_VERSION_URL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
+    //const string LOCAL_VERSION_URL = "/versionTable.csv"; // 로컬 버전 테이블 경로
+
+
+    //Dictionary<string, string[]> versionTable;
+    Dictionary<string, string[]> VersionTable 
+    {
+        get;
+        set;
+    }
+
     string LocalVersionPath
     {
-        get { return Manager.Data.DataPath; }
+        get { return $"{Manager.Data.DataPath}/versionTable.csv"; }
     }
 
     PlayerBeforeCheckPopup instancePopupUI;
     [SerializeField] DownLoadUI downLoadUI;
+    [SerializeField] LoadTable currentTable;
 
     string titleText;
     string detailText;
@@ -40,6 +50,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     protected override void Awake()
     {
         base.Awake();
+        currentTable = LoadTable.NULL;
         StartCoroutine(CreateDirectory(LoadToServerVersion));
     }
 
@@ -249,7 +260,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// </summary>
     void IsVersionCached(string bundleFileName, Action<bool> call)
     {
-        if (localVersionTable.ContainsKey(bundleFileName))
+        if (VersionTable.ContainsKey(bundleFileName))
         {
             string[] bundleData = VersionTable[bundleFileName];
             call?.Invoke(Caching.IsVersionCached(
@@ -286,9 +297,9 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 해당 번들이 버전에 포함되어있는지 확인
     /// </summary>
-    public void IncludeVersionCheck(string bundleName, Action<bool> call)
+    void IncludeVersionCheck(string bundleName, Action<bool> call)
     {
-        if (localVersionTable != null)
+        if (VersionTable != null)
         {
             bool state = VersionTable.ContainsKey(bundleName);
             call?.Invoke(state);
@@ -310,9 +321,11 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     IEnumerator DownloadBundle(string bundleName, Action<AssetBundle> callBundle = null)
     {
         int idx = -1;
+        string[] bundleData = VersionTable[bundleName];
+
         for (int i = 0; i < VersionTable.Count; i++)
         {
-            if (string.Equals(VersionTable[bundleName][(int)VersionTableColumn.FileName], bundleName))
+            if (string.Equals(bundleData[(int)VersionTableColumn.FileName], bundleName))
             {
                 idx = i;
                 break;
@@ -325,7 +338,6 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         }
 
         //번들 url 재설정 및 요청
-        string[] bundleData = VersionTable[bundleName];
         string url = ExtractSubstring(bundleData[(int)VersionTableColumn.DownloadLink]);
 
         UnityWebRequest uwr = UnityWebRequest.Head(url);
@@ -443,7 +455,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// </summary>
     void MakeDownloadList(List<string> downloadBundleNameList, out List<string> downLoadArray)
     {
-        if (downloadBundleNameList.Count == 0)
+        int count = downloadBundleNameList.Count;
+        if (count == 0)
         {
             downLoadArray = null;
             return;
@@ -468,10 +481,10 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             }
         }
 
-        if (downloadBundleNameList.Count != checkCount)
-            Message.LogWarning($"WriteDownloadList _ Not Match Download List Count Check {downloadBundleNameList.Count} / {checkCount}");
+        if (count != checkCount)
+            Message.LogWarning($"WriteDownloadList _ Not Match Download List Count Check {count} / {checkCount}");
         else
-            Message.Log($"CheckCount : {downloadBundleNameList.Count} Download Count : {downLoadArray.Count}");
+            Message.Log($"CheckCount : {count} Download Count : {downLoadArray.Count}");
     }
 
     /// <summary>
@@ -501,12 +514,13 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             };
         }
 
-        while (waitQueue.Count != downLoadArray.Count)
+        int queueCount = waitQueue.Count;
+        while (queueCount != downLoadArray.Count)
         {
             yield return new WaitForFixedUpdate();
         }
 
-        if (waitQueue.Count > 0)
+        if (queueCount > 0)
         {
             OnDownloadPopup(waitQueue, downLoadArray, fetchSize);
         }
@@ -551,7 +565,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 번들 버전 최신화
     /// </summary>
-    public void LoadToServerVersion(Action<bool> refeshState = null, Action downloadAction = null)
+    void LoadToServerVersion(Action<bool> refeshState = null, Action downloadAction = null)
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -559,10 +573,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             refeshState?.Invoke(false);
             return;
         }
-        else
-        {
-            StartCoroutine(LoadServerVersionTableRoutine(refeshState, downloadAction));
-        }
+
+        StartCoroutine(LoadServerVersionTableRoutine(refeshState, downloadAction));
     }
 
 
@@ -570,19 +582,23 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// <summary>
     /// 버전 비교
     /// </summary>
-    bool VersionCompleteCheck()
+    bool VersionCompleteCheck(List<string[]> serverVersionTableList)
     {
         string key;
-        foreach (KeyValuePair<string, string[]> bundleVersion in localVersionTable)
-        {
-            key = bundleVersion.Key;
+        string[] bundleData;
+        int count = serverVersionTableList.Count;
 
-            if (serverVersionTable.ContainsKey(key) &&
-                bundleVersion.Value[(int)VersionTableColumn.Version] !=
-                serverVersionTable[key][(int)VersionTableColumn.Version])
-            {   continue;       }
-            else
-            {   return false;   }
+        for (int i = 0; i < count; i++)
+        {
+            bundleData = serverVersionTableList[i];
+            key = bundleData[(int)VersionTableColumn.FileName];
+
+            if (VersionTable.ContainsKey(key) == false ||
+                bundleData[(int)VersionTableColumn.Version] !=
+                VersionTable[key][(int)VersionTableColumn.Version])
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -592,53 +608,83 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     /// </summary>
     void LoadToLocalVersion()
     {
-        if (System.IO.Directory.Exists($"{LocalVersionPath}{LOCALVERSIONURL}"))
+        if (currentTable != LoadTable.NULL)
+            return;
+
+        if (System.IO.Directory.Exists($"{LocalVersionPath}"))
         {
-            string localVersion = System.IO.File.ReadAllText($"{LocalVersionPath}{LOCALVERSIONURL}");
+            string localVersion = System.IO.File.ReadAllText($"{LocalVersionPath}");
             if (localVersion != null)
             {
                 string[] rows = localVersion.Split('\n');
-                int length = rows.Length;
+                int count = rows.Length;
 
-                if (localVersionTable == null)
-                    localVersionTable = new(length);
+                if (VersionTable == null)
+                    VersionTable = new(count);
                 else
-                    localVersionTable.Clear();
+                    VersionTable.Clear();
 
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < count; i++)
                 {
                     string[] versionData = rows[i].Split(',');
-                    localVersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
+                    VersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
                 }
             }
         }
         else
         {
-            localVersionTable = null;
             Message.Log("로컬 데이터가 없습니다.");
         }
+        currentTable = LoadTable.Local;
     }
+
     //서버 데이터 불러오기 
     IEnumerator LoadServerVersionTableRoutine(Action<bool> refeshState, Action call)
     {
-        using UnityWebRequest uwr = UnityWebRequest.Get(SERVERVERSIONURL);
+        if (currentTable == LoadTable.Server)
+            yield break;
+
+        using UnityWebRequest uwr = UnityWebRequest.Get(SERVER_VERSION_URL);
         yield return uwr.SendWebRequest();
        
         string[] rows = uwr.downloadHandler.text.Split('\n');
-        int length = rows.Length;
+        int count = rows.Length;
+        List<string[]> serverVersionTableList = new(count);
 
-        if (serverVersionTable == null)
-            serverVersionTable = new();
-        else
-            serverVersionTable.Clear();
-
-        for (int i = 0; i < length; i++)
+        string[] bundleData;
+        for (int i = 0; i < count; i++)
         {
-            string[] versionData = rows[i].Split(',');
-            serverVersionTable.Add(versionData[(int)VersionTableColumn.FileName], versionData);
+            bundleData = rows[i].Split(',');
+            serverVersionTableList.Add(bundleData);
         }
 
-        refeshState?.Invoke(serverVersionTable != null);
+        //로드 데이터 테이블과 차이점이 있으면 변경
+        if(VersionCompleteCheck(serverVersionTableList) == false)
+        {
+            if (VersionTable != null)
+                VersionTable.Clear();
+            else
+                VersionTable = new(count);
+
+            for (int i = 0; i < count; i++)
+            {
+                bundleData = serverVersionTableList[i];
+                VersionTable.Add(bundleData[(int)VersionTableColumn.FileName], bundleData);
+            }
+
+            byte[] data = uwr.downloadHandler.data;
+
+            if (Directory.Exists(LocalVersionPath) == false)
+                Directory.CreateDirectory(LocalVersionPath);
+
+            FileStream fs = new FileStream($"{LocalVersionPath}", FileMode.Create);
+            fs.Write(data, 0, data.Length);
+            fs.Dispose();
+        }
+
+        currentTable = LoadTable.Server;
+
+        refeshState?.Invoke(true);
         call?.Invoke();
     }
 
@@ -656,12 +702,13 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         int startIndex = inputString.IndexOf(startMarker);
         if (startIndex == -1)
             return null;
+
         startIndex += startMarker.Length;
         int endIndex = inputString.IndexOf(endMarker, startIndex);
         if (endIndex == -1)
             return null;
 
-        return $"{DOWNLOADPATH}{inputString[startIndex..endIndex]}";
+        return $"{DOWNLOAD_PATH}{inputString[startIndex..endIndex]}";
     }
 
     ulong GetFreeDiskValue()
@@ -753,10 +800,5 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     }
 
 
-    public enum VersionTableColumn // 버전 테이블 Column(열) 정보
-    {
-        FileName, // 번들 파일 명
-        Version, // 번들 버전 정보
-        DownloadLink, // 번들 설치 링크
-    }
+
 }
