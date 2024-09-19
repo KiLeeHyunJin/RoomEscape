@@ -75,6 +75,8 @@ public class LobbyMain : BaseUI
         base.Start();
         BacktoMain();
         flowManager = FindObjectOfType<GameFlow>();
+
+        
     }
 
     public override bool Init()
@@ -156,7 +158,7 @@ public class LobbyMain : BaseUI
         Manager.Text.TextChange();
     }
 
-    void PlayChapter()
+    public void PlayChapter()
     {
         if (chapterNum == 0)
             PlayGame();

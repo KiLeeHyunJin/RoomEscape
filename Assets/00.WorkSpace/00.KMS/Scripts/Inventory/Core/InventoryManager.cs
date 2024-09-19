@@ -38,11 +38,8 @@ public class InventoryManager : Singleton<InventoryManager>
             return;
 
         inventory.Init();
-        //Debug.Log($"Chapter Name {chapterName}");
         for (int i = 0; i < data.saveArray.Length; i++)
         {
-            //Debug.Log($"아이템 : {data.ReadData[i].itemName} , Count : {data.ReadData[i].count}");
-
             if (data.saveArray[i].count <= 0 || string.IsNullOrEmpty(data.saveArray[i].itemName))
                 continue;
 
@@ -55,7 +52,7 @@ public class InventoryManager : Singleton<InventoryManager>
         Manager.Resource.GetAsset(chapterName, itemName, ResourceType.Scriptable, (obj) =>
         {
             inventory.SetItem(idx, (ScriptableItem)obj, count);
-        }, true, false);
+        }, false);
     }
 
     public int Count { get { return inventory.Count; } }

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class BackendManager : Singleton<BackendManager>
 {
-
+    bool isLogin;
+    public bool IsLogin { get { return isLogin; } }
+    
+    public void SetLogin()
+    {
+        isLogin = true;
+    }
     protected override void Awake()
     {
         base.Awake();
-
+        isLogin = false;
         //뒤끝 서버 초기화
         BackendSetup();
 

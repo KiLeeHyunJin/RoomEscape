@@ -10,7 +10,7 @@ public class DownLoadUI : PopUpUI
     [SerializeField] Button nextButton;
     [SerializeField] Button cancleButton;
     [SerializeField] TextMeshProUGUI stateTxt;
-    ChoiceUI choice;
+    LobbyMain lobby;
     FixedUI fixedUI;
     Action downloadAction;
     protected override void Awake()
@@ -34,8 +34,8 @@ public class DownLoadUI : PopUpUI
     {
         base.Start();
         //챕터 선택 클래스가 없다면
-        if(choice == null) //찾아서 대입
-            choice = FindObjectOfType<ChoiceUI>();
+        if(lobby == null) //찾아서 대입
+            lobby = FindObjectOfType<LobbyMain>();
 
         //아웃게임 버튼 컴포넌트 대입
         fixedUI = FindObjectOfType<FixedUI>();
@@ -64,7 +64,7 @@ public class DownLoadUI : PopUpUI
             }
         }
     }
-    void completeText()
+    void CompleteText()
     {
         BackendChartData.logChart.TryGetValue(175, out LogChartData logChartData);
         if (logChartData != null)
@@ -97,21 +97,23 @@ public class DownLoadUI : PopUpUI
         UIState(true);
         StartCoroutine(StartGame());
     }
+
     IEnumerator StartGame()
     {
         do
         {
             yield return null;
             //choiceUI컴포넌트가 null이 아닐때까지 반복
-            choice = FindObjectOfType<ChoiceUI>();
+            lobby = FindObjectOfType<LobbyMain>();
             Debug.Log("Recall");
         }
-        while (choice == null);
+        while (lobby == null);
         //게임 시작 메소드
-        choice.PlayChapter();
+        lobby.PlayChapter();
         //팝업 전부 종료
         Manager.UI.ClearPopUpUI();
     }
+
     /// <summary>
     /// ui상태를 전부 매개변수 상태로 설정
     /// </summary>
@@ -119,8 +121,8 @@ public class DownLoadUI : PopUpUI
     {
         if (fixedUI != null)
             fixedUI.gameObject.SetActive(state);
-        if (choice != null)
-            choice.gameObject.SetActive(state);
+        if (lobby != null)
+            lobby.gameObject.SetActive(state);
     }
 
     /// <summary>
@@ -152,7 +154,7 @@ public class DownLoadUI : PopUpUI
         slider.value = 1;
         nextButton.interactable = true;
         // 다운로드 완료 텍스트 출력
-        completeText();
+        CompleteText();
     }
 
     /// <summary>

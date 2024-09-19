@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.Audio;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using static ChapterSaveLoad;
 
 public class DataManager : Singleton<DataManager>
 {
@@ -69,9 +66,9 @@ public class DataManager : Singleton<DataManager>
         this[--chapterNum] = setData;
     }
 
-    public void SetClearAlbum(DataManager.GameDataName chapterName, int idx , bool result)
+    public void SetClearAlbum(DataManager.GameDataName chapterName, int idx, bool result)
     {
-        if(idx > Define.WrongImageStageCount)
+        if (idx > Define.WrongImageStageCount)
         {
             Message.LogError($"SetClearAlbum Is Out Range - {chapterName}의 {idx}번째 state 접근 시도 (최대 범위 : {Define.WrongImageStageCount})");
             return;
@@ -88,7 +85,7 @@ public class DataManager : Singleton<DataManager>
             chapterData.InitWrongImageData((int)DataManager.GameDataName.END);
 
         bool? getStat = chapterData.wrongImageData[(int)chapterName][idx];
-        if(getStat.HasValue == false)
+        if (getStat.HasValue == false)
         {
             Message.LogError($"GetClearAlbumState Is Not Has value - {chapterName}의 {idx}번째 state 접근 시도");
             return false;
@@ -119,7 +116,7 @@ public class DataManager : Singleton<DataManager>
         return returnValue;
     }
 
-    
+
 
     protected override void Awake()
     {
@@ -180,7 +177,7 @@ public class DataManager : Singleton<DataManager>
         // 권한 확인 및 요청
         yield return StartCoroutine(VerifyPermissions());
 
-        if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead ) == false ||
+        if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) == false ||
             Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) == false)
         {
             Application.Quit();
@@ -282,9 +279,9 @@ public class DataManager : Singleton<DataManager>
         yield return VerifyingPermissions(Define.READ);
 #endif
 
-        if(File.Exists($"{DataPath}/{name}.txt"))
+        if (File.Exists($"{DataPath}/{name}.txt"))
         {
-            
+
             string json = File.ReadAllText($"{DataPath}/{name}.txt");
             if (name == DataName.UserData)
             {
@@ -334,7 +331,7 @@ public class DataManager : Singleton<DataManager>
         }
     }
 
-   public bool HasPermissions()
+    public bool HasPermissions()
     {
 #if PLATFORM_ANDROID && UNITY_EDITOR == false
         // 권한 확인

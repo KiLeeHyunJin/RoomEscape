@@ -246,7 +246,7 @@ public class ResourceRef : MonoBehaviour
 
     void LoadData<TObject>(Action<UnityEngine.Object> call,bool donReleaseState = false) where TObject : UnityEngine.Object
     {
-        Manager.Resource.GetAsset(bundleType.ToString(), refFileName, resourceType, call, compulsion, donReleaseState);
+        Manager.Resource.GetAsset(bundleType.ToString(), refFileName, resourceType, call, donReleaseState);
     }
 
 }

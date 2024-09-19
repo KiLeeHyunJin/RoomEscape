@@ -89,7 +89,7 @@ public class ChapterManager : Singleton<ChapterManager>
             QuestionDataBaseObject db = obj as QuestionDataBaseObject;
             hintData.Init(db);
         
-        }, true, false);
+        }, false);
     }
 
 

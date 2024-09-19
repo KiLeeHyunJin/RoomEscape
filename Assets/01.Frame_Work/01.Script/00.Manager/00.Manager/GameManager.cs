@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        Application.targetFrameRate = 60;
     }
     //필드에 배치할 위치
     [SerializeField] Transform Field;

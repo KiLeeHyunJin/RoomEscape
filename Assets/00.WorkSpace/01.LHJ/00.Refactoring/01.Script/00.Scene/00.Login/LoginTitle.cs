@@ -87,6 +87,7 @@ public class LoginTitle : BaseUI
     void ChangeScene()
     {
         //Manager.Scene.LoadScene("LobbyScene");
+        Manager.Backend.SetLogin();
         flowManager.ChangeGameScene(GameFlow.GameState.Lobby);
     }
     void Delete()

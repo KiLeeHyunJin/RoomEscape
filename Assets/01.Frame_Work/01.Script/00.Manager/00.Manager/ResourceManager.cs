@@ -132,7 +132,7 @@ public class ResourceManager : Singleton<ResourceManager>
     /// <summary>
     /// 번들 로드 시도
     /// </summary>
-    public void GetAsset(string bundleName, string fileName, ResourceType _type, Action<UnityEngine.Object> returnCall = null, bool compulsion = false, bool donReleaseState = false)
+    public void GetAsset(string bundleName, string fileName, ResourceType _type, Action<UnityEngine.Object> returnCall = null, bool donReleaseState = false)
     {
         Dictionary<string, AssetBundle> dic = GetDictionary(donReleaseState);
         //번들이 딕셔너리에 존재하는 지 확인
@@ -161,8 +161,7 @@ public class ResourceManager : Singleton<ResourceManager>
             waitBundleDic[bundleName].
                 Add(new(_type, fileName, donReleaseState, returnCall));
             //강제 다운로드인지 아닌지 판별해서 액션에 저장
-            Action<string, Action<AssetBundle>> loadAction = compulsion ?
-            Manager.DownLoadBundle.GetLoadOrDownloadBundle : Manager.DownLoadBundle.GetLoadBundle;
+            Action<string, Action<AssetBundle>> loadAction = Manager.DownLoadBundle.GetLoadBundle;
 
             loadAction?.Invoke(bundleName, (bundle) =>
             {

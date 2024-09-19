@@ -9,8 +9,10 @@ public class PlayerBeforeCheckPopup : PopUpUI
 {
     [SerializeField] Button continueBtn;
     [SerializeField] Button cancleBtn;
+
     [SerializeField] TextMeshProUGUI titleTxt;
     [SerializeField] TextMeshProUGUI informationTxt;
+
     Action playAction;
     Action closeAction;
     protected override void Awake()

@@ -15,9 +15,10 @@ public class GameFlow : MonoBehaviour
     [SerializeField] GameObject LobbyScene;
     [field: SerializeField] public GameState CurrentState { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
-        Application.targetFrameRate = 60;
+        if (Manager.Backend.IsLogin)
+            ChangeGameScene(GameState.Lobby);
     }
 
     public void ChangeGameScene(GameState changeScene)

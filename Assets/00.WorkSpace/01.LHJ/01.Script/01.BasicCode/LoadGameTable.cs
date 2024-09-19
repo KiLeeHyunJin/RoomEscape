@@ -88,7 +88,7 @@ public class LoadGameTable : MonoBehaviour
             //인게임 UI 객체의 크기 및 위치값 초기화를 시도한다.
             TransformInit(ingameUI);
 
-        }, true, false);
+        }, false);
     }
     /// <summary>
     /// 인벤토리 UI를 가져온다.
@@ -117,7 +117,7 @@ public class LoadGameTable : MonoBehaviour
                 //해당 인벤토리 버튼에 현재 복제한 인벤토리를 연결한다.
                 inventoryButton.SetInventoryPanel(inven);
             }
-        }, true, false);
+        }, false);
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class LoadGameTable : MonoBehaviour
             field.InitSize();
             //해당 챕터의 데이터 정보를 가져온다.
             LoadChapterData();
-        }, true, false);
+        }, false);
     }
 
     void LoadChapterData()
