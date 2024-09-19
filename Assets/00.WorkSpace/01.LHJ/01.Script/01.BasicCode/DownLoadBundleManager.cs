@@ -23,8 +23,8 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         DownloadLink, // 번들 설치 링크
     }
 
-    const string DOWNLOAD_PATH    = "https://drive.google.com/uc?export=download&id=";
-    const string SERVER_VERSION_URL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
+    const string DOWNLOAD_PATH          = "https://drive.google.com/uc?export=download&id=";
+    const string SERVER_VERSION_URL     = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
     const string LOCAL_VERSION_FILENAME = "/versionTable.csv"; // 로컬 버전 테이블 경로
     string LocalVersionPath { get { return Manager.Data.DataPath; } }
     
@@ -41,11 +41,6 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     {
         base.Awake();
         CurrentTable = LoadTable.NULL;
-        StartCoroutine(CreateDirectory());
-        if (LoadToLocalVersion() == false)
-        {
-
-        }
     }
 
     Coroutine checking;
@@ -676,12 +671,6 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         }
         return "0 Bytes";
     }
-
-    IEnumerator DownLoadRoutine(UnityWebRequest uwr)
-    {
-        yield return uwr.SendWebRequest();
-    }
-
     
     #endregion Tools
 
