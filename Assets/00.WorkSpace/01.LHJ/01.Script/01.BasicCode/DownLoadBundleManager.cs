@@ -32,6 +32,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
     string detailText;
 
     Dictionary<string, string[]> VersionTable   { get;  set; }
+    
 
     PlayerBeforeCheckPopup instancePopupUI;
     [SerializeField] DownLoadUI downLoadUI;
@@ -58,6 +59,13 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 #endif
     }
 
+    public string GetBundleURL(string bundleName)
+    {
+        Dictionary<string, string[]> verionDic = VersionTable;
+        if (verionDic == null || verionDic.ContainsKey(bundleName) == false)
+            return null;
+        return verionDic[bundleName][(int)VersionTableColumn.DownloadLink];
+    }
     /// <summary>
     /// 현재 로드되어있는 번들 콘솔창에 출력
     /// </summary>

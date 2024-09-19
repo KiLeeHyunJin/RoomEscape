@@ -217,9 +217,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1826406855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d6fc7236944314287e988ac0d8196f, type: 3}
+  m_Script: {fileID: 11500000, guid: 295ed4e9e53ed8640ac3599c31e31c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultLabel:
+    m_LabelString: Chapter_1
+  defaultObj:
+    m_AssetGUID: 7aa3aefaef7730c408ac2be726530be2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  matObj:
+    m_AssetGUID: cd130579bb558cf419b0c9d2ec3d7558
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  matLabel:
+    m_LabelString: Chapter_2
 --- !u!1 &1856724801
 GameObject:
   m_ObjectHideFlags: 0

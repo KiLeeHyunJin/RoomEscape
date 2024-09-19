@@ -34,15 +34,17 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: d6b193f7ecd9bb64586b16dc7deaafb1
+    m_Id: 86c0f89549b44ac4bad6306515005961
   m_RemoteCatalogLoadPath:
-    m_Id: d568eb137254f3f4aa2338a8a8a9b460
+    m_Id: 67c88a0c61a034546aee175ae3088791
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 0
   m_GroupAssets:
   - {fileID: 11400000, guid: 3fcda769b3bbfc74e8c8b1a84143b99c, type: 2}
   - {fileID: 11400000, guid: 6e71cf391b8fe1248ad614300dfd0e7e, type: 2}
+  - {fileID: 11400000, guid: ad81547a69e0a7e42ae2f1b83744e511, type: 2}
+  - {fileID: 11400000, guid: 33126089fcb6ef24483cb57d78d2fb82, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -60,6 +62,18 @@ MonoBehaviour:
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 921893df58f7d7546bdb51205e263a82
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 86c0f89549b44ac4bad6306515005961
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 67c88a0c61a034546aee175ae3088791
+        m_Value: C:/Refactoring/Assets
+      - m_Id: 0ae4f15b24172084eb357b52903a054d
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 69d6d80f9be21884aa19a115886388f2
+        m_Value: C:/Refactoring/Assets
+      - m_Id: df7c32c16795905408b0dfb7cbad9bc8
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 20974016d3db05e4c93be10bef3e8d12
+        m_Value: C:/Refactoring/Assets
     m_ProfileEntryNames:
     - m_Id: ad0a8cc8ba1e79f4590d712e891151cb
       m_Name: BuildTarget
@@ -69,6 +83,24 @@ MonoBehaviour:
       m_InlineUsage: 0
     - m_Id: 921893df58f7d7546bdb51205e263a82
       m_Name: Local.LoadPath
+      m_InlineUsage: 0
+    - m_Id: 86c0f89549b44ac4bad6306515005961
+      m_Name: Remote.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 67c88a0c61a034546aee175ae3088791
+      m_Name: Remote.LoadPath
+      m_InlineUsage: 0
+    - m_Id: 0ae4f15b24172084eb357b52903a054d
+      m_Name: Chapter1.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 69d6d80f9be21884aa19a115886388f2
+      m_Name: Chapter1.LoadPath
+      m_InlineUsage: 0
+    - m_Id: df7c32c16795905408b0dfb7cbad9bc8
+      m_Name: Chapter2.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 20974016d3db05e4c93be10bef3e8d12
+      m_Name: Chapter2.LoadPath
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
