@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+
+
 public class AddressableManager : MonoBehaviour
 {
     [SerializeField] AssetLabelReference defaultLabel;
@@ -12,19 +14,23 @@ public class AddressableManager : MonoBehaviour
     [SerializeField] AssetLabelReference matLabel;
     long patchSize;
     Dictionary<string, long> patchMap;
-
     static string Chapter02URL;
     static string Chapter01URL;
+    static string ChapterCatalog;
+
 
     // Start is called before the first frame update
     void Start()
     {
         patchMap = new();
+        Manager.DownLoadBundle.LoadToServerVersion();
+        ChapterCatalog = Manager.DownLoadBundle.GetBundleURL("catalog");
+        Chapter01URL = Manager.DownLoadBundle.GetBundleURL("chapter01");
+        Chapter02URL = Manager.DownLoadBundle.GetBundleURL("chapter02");
+
         StartCoroutine(InitAddressable());
         StartCoroutine(CheckUpdateFiles());
-        Manager.DownLoadBundle.LoadToServerVersion();
-        Chapter01URL = Manager.DownLoadBundle.GetBundleURL("Chapter01");
-        Chapter02URL = Manager.DownLoadBundle.GetBundleURL("Chapter02");
+
         StartCoroutine(PatchFiles());
     }
 
@@ -95,6 +101,9 @@ public class AddressableManager : MonoBehaviour
                 Message.Log("Complete");
                 defaultObj.InstantiateAsync().Completed +=(oper)=> 
                 {
+                    if (oper.Result == null)
+                        return;
+
                     GameObject obj = GameObject.Instantiate(oper.Result); ;
                     obj.name = "__1";
                     obj.transform.SetParent(this.transform);

@@ -69,11 +69,11 @@ MonoBehaviour:
       - m_Id: 0ae4f15b24172084eb357b52903a054d
         m_Value: ServerData/[BuildTarget]
       - m_Id: 69d6d80f9be21884aa19a115886388f2
-        m_Value: C:/Refactoring/Assets
+        m_Value: '[Chapter01URL]'
       - m_Id: df7c32c16795905408b0dfb7cbad9bc8
         m_Value: ServerData/[BuildTarget]
       - m_Id: 20974016d3db05e4c93be10bef3e8d12
-        m_Value: C:/Refactoring/Assets
+        m_Value: '[Chapter02URL]'
     m_ProfileEntryNames:
     - m_Id: ad0a8cc8ba1e79f4590d712e891151cb
       m_Name: BuildTarget
