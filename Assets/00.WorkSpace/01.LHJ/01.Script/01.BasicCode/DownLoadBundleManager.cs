@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
 {
     public enum LoadTable
-    { 
+    {
         NULL,
         Local,
         Server,
@@ -23,11 +23,19 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         DownloadLink, // 번들 설치 링크
     }
 
-    const string DOWNLOAD_PATH          = "https://drive.google.com/uc?export=download&id=";
-    const string SERVER_VERSION_URL     = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI/export?format=csv";  // 서버 버전 테이블 접속 URL
+    const string DOWNLOAD_PATH = "https://drive.google.com/uc?export=download&id=";
+    //const string SERVER_VERSION_URL = ;  // 서버 버전 테이블 접속 URL
     const string LOCAL_VERSION_FILENAME = "/versionTable.csv"; // 로컬 버전 테이블 경로
     string LocalVersionPath { get { return Manager.Data.DataPath; } }
-    
+    const string ORIGIN_SERVER_URL = "https://docs.google.com/spreadsheets/d/1pu9z0RT1m9YmvsiVd7uOAaL8JTutDJIVMhLrMT68RuI";
+    const string TEST_SERVER_URL = "https://docs.google.com/spreadsheets/d/1L_w-MwmMCwQ55ayl7H-CVtI6Vlie7AUQ0Lr_wkLNw4Y";
+     string GetServerVersionURL {
+        get
+        {
+            return $"{TEST_SERVER_URL}/export?format=csv";
+        }
+    }
+
     string titleText;
     string detailText;
 
@@ -64,7 +72,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         Dictionary<string, string[]> verionDic = VersionTable;
         if (verionDic == null || verionDic.ContainsKey(bundleName) == false)
             return null;
-        return verionDic[bundleName][(int)VersionTableColumn.DownloadLink];
+        return ExtractSubstring(verionDic[bundleName][(int)VersionTableColumn.DownloadLink]);
     }
     /// <summary>
     /// 현재 로드되어있는 번들 콘솔창에 출력
@@ -479,7 +487,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
             refeshState?.Invoke(false);
             return;
         }
-        UnityWebRequest uwr = UnityWebRequest.Get(SERVER_VERSION_URL);
+        UnityWebRequest uwr = UnityWebRequest.Get(GetServerVersionURL);
         uwr.SendWebRequest().completed += (oper) => { CompleteServerTable(uwr, refeshState); };
     }
 

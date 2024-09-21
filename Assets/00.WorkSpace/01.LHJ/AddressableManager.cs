@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 
 
@@ -19,19 +21,66 @@ public class AddressableManager : MonoBehaviour
     static string ChapterCatalog;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        Manager.DownLoadBundle.LoadToServerVersion((state) => 
+        { 
+            if(state)
+            {
+                StartCoroutine(Init());
+            }
+        });
+
+    }
+
+    IEnumerator Init()
+    {
+        string catalog;
         patchMap = new();
-        Manager.DownLoadBundle.LoadToServerVersion();
-        ChapterCatalog = Manager.DownLoadBundle.GetBundleURL("catalog");
+
         Chapter01URL = Manager.DownLoadBundle.GetBundleURL("chapter01");
         Chapter02URL = Manager.DownLoadBundle.GetBundleURL("chapter02");
 
-        StartCoroutine(InitAddressable());
+        catalog = Manager.DownLoadBundle.GetBundleURL("catalog");
+        yield return DownloadCatalog(catalog);
+
+        catalog = Manager.DownLoadBundle.GetBundleURL("catalogHash");
+        yield return DownloadCatalog(catalog);
+
+        var initHandle = Addressables.InitializeAsync();
+        yield return initHandle;
+
+        if (initHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log("Addressables initialized successfully.");
+        }
+        else
+        {
+            Debug.LogError("Failed to initialize Addressables.");
+        }
+
         StartCoroutine(CheckUpdateFiles());
 
         StartCoroutine(PatchFiles());
+    }
+
+    private IEnumerator DownloadCatalog(string url)
+    {
+        using (var www = new UnityEngine.Networking.UnityWebRequest(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                // 다운로드 성공 시 처리 로직 (예: 파일 저장)
+                Debug.Log($"Successfully downloaded catalog from {url}");
+            }
+            else
+            {
+                Debug.LogError($"Failed to download catalog from {url}: {www.error}");
+            }
+        }
     }
 
     IEnumerator InitAddressable()
