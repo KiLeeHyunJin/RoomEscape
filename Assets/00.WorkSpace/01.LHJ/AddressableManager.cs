@@ -16,17 +16,17 @@ public class AddressableManager : MonoBehaviour
     [SerializeField] AssetLabelReference matLabel;
     long patchSize;
     Dictionary<string, long> patchMap;
-    static string Chapter02URL;
-    static string Chapter01URL;
-    static string ChapterCatalog;
+    public static string Chapter02URL { get {return Manager.DownLoadBundle.GetBundleURL("chapter01"); } }
+    public static string Chapter01URL { get {return Manager.DownLoadBundle.GetBundleURL("chapter02"); } }
 
 
 
     void Start()
     {
-        Manager.DownLoadBundle.LoadToServerVersion((state) => 
-        { 
-            if(state)
+        patchSize = 0;
+        Manager.DownLoadBundle.LoadToServerVersion((state) =>
+        {
+            if (state)
             {
                 StartCoroutine(Init());
             }
@@ -34,13 +34,13 @@ public class AddressableManager : MonoBehaviour
 
     }
 
+
+
+
     IEnumerator Init()
     {
         string catalog;
         patchMap = new();
-
-        Chapter01URL = Manager.DownLoadBundle.GetBundleURL("chapter01");
-        Chapter02URL = Manager.DownLoadBundle.GetBundleURL("chapter02");
 
         catalog = Manager.DownLoadBundle.GetBundleURL("catalog");
         yield return DownloadCatalog(catalog);
@@ -48,21 +48,16 @@ public class AddressableManager : MonoBehaviour
         catalog = Manager.DownLoadBundle.GetBundleURL("catalogHash");
         yield return DownloadCatalog(catalog);
 
-        var initHandle = Addressables.InitializeAsync();
-        yield return initHandle;
+        yield return new WaitForSeconds(1);
 
-        if (initHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            Debug.Log("Addressables initialized successfully.");
-        }
-        else
-        {
-            Debug.LogError("Failed to initialize Addressables.");
-        }
+        yield return InitAddressable();
+        Debug.Log("Init Clear");
+        
+        yield return CheckUpdateFiles();
+        Debug.Log("Update Clear");
 
-        StartCoroutine(CheckUpdateFiles());
-
-        StartCoroutine(PatchFiles());
+        yield return PatchFiles();
+        //Debug.Log("Patch Clear");
     }
 
     private IEnumerator DownloadCatalog(string url)
@@ -87,48 +82,57 @@ public class AddressableManager : MonoBehaviour
     {
         var init = Addressables.InitializeAsync();
         yield return init;
+
+        //if (init.Status == AsyncOperationStatus.Succeeded)
+        //{
+        //    Debug.Log("Addressables initialized successfully.");
+        //}
+        //else
+        //{
+        //    Debug.LogError("Failed to initialize Addressables.");
+        //}
     }
 
     IEnumerator PatchFiles()
     {
         var labelse = new List<string>() { defaultLabel.labelString/*, matLabel.labelString*/ };
- 
+
         foreach (string label in labelse)
         {
             var handle = Addressables.GetDownloadSizeAsync(label);
             yield return handle;
-            if(handle.Result != 0)
+            if (handle.Result != 0)
             {
                 StartCoroutine(DownLoadLabel(label));
             }
         }
-        yield return CheckDownLoad();
+       yield return CheckDownLoad();
     }
+
     IEnumerator DownLoadLabel(string label)
     {
         patchMap.Add(label, 0);
 
         var handle = Addressables.DownloadDependenciesAsync(label, false);
-        while(handle.IsDone == false)
+        while (handle.IsDone == false)
         {
             patchMap[label] = handle.GetDownloadStatus().DownloadedBytes;
             yield return new WaitForFixedUpdate();
         }
         patchMap[label] = handle.GetDownloadStatus().TotalBytes;
         Addressables.Release(handle);
-
     }
+
     IEnumerator CheckUpdateFiles()
     {
         var labelse = new List<string>() { defaultLabel.labelString/*, matLabel.labelString*/ };
-        patchSize = default;
         foreach (var label in labelse)
         {
             var handle = Addressables.GetDownloadSizeAsync(label);
             yield return handle;
             patchSize += handle.Result;
         }
-        if(patchSize > 0)
+        if (patchSize > 0)
         {
             //다운로드가 있을 경우
         }
@@ -141,14 +145,14 @@ public class AddressableManager : MonoBehaviour
     IEnumerator CheckDownLoad()
     {
         long total = 0;
-        while(true)
+        while (true)
         {
             total += patchMap.Sum(tmp => tmp.Value);
             Message.Log(total.ToString());
-            if(total == patchSize)
+            if (total >= patchSize)
             {
                 Message.Log("Complete");
-                defaultObj.InstantiateAsync().Completed +=(oper)=> 
+                defaultObj.InstantiateAsync().Completed += (oper) =>
                 {
                     if (oper.Result == null)
                         return;

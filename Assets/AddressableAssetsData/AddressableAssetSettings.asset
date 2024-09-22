@@ -34,9 +34,9 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 86c0f89549b44ac4bad6306515005961
+    m_Id: 14e7b73b60ee89b439c5b2c1ed1dabc0
   m_RemoteCatalogLoadPath:
-    m_Id: 67c88a0c61a034546aee175ae3088791
+    m_Id: 921893df58f7d7546bdb51205e263a82
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 0
@@ -63,17 +63,17 @@ MonoBehaviour:
       - m_Id: 921893df58f7d7546bdb51205e263a82
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 86c0f89549b44ac4bad6306515005961
-        m_Value: ServerData/[BuildTarget]
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 67c88a0c61a034546aee175ae3088791
-        m_Value: C:/Refactoring/Assets
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 0ae4f15b24172084eb357b52903a054d
         m_Value: ServerData/[BuildTarget]
       - m_Id: 69d6d80f9be21884aa19a115886388f2
-        m_Value: '[Chapter01URL]'
+        m_Value: '[AddressableManager.Chapter01URL]'
       - m_Id: df7c32c16795905408b0dfb7cbad9bc8
         m_Value: ServerData/[BuildTarget]
       - m_Id: 20974016d3db05e4c93be10bef3e8d12
-        m_Value: '[Chapter02URL]'
+        m_Value: '[AddressableManager.Chapter02URL]'
     m_ProfileEntryNames:
     - m_Id: ad0a8cc8ba1e79f4590d712e891151cb
       m_Name: BuildTarget
