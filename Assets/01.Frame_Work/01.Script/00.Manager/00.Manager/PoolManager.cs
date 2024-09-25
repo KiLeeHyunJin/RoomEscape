@@ -6,22 +6,10 @@ public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<int, ObjectPool> poolDic = new Dictionary<int, ObjectPool>();
 
-    [SerializeField] PooledObject click;
 
     protected override void Awake()
     {
         base.Awake();
-        CreatePool(click, 10, 10,true);
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PooledObject obj = GetPool(click);
-            (obj.transform as RectTransform).anchoredPosition = Input.mousePosition;
-            Manager.UI.ShowEffect(obj.transform);
-        }
     }
 
     public void CreatePool(PooledObject prefab, int size, int capacity,bool dontDestoryState = false)
