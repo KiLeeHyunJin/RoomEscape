@@ -4,16 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseUI : MonoBehaviour
+public abstract class BaseUI : MonoBehaviour
 {
-    private Dictionary<string, GameObject> gameObjectDic;
-    private Dictionary<string, Component> componentDic;
     protected Dictionary<System.Type, UnityEngine.Object[]> _objects = new Dictionary<System.Type, UnityEngine.Object[]>();
 
     protected bool _init = false;
     protected virtual void Awake()
     {
-        Bind();
+        //Bind();
     }
     protected virtual void Start()
     {
@@ -26,6 +24,8 @@ public class BaseUI : MonoBehaviour
 
         return _init = true;
     }
+
+
     protected void Bind<T>(System.Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
@@ -44,11 +44,11 @@ public class BaseUI : MonoBehaviour
         }
     }
 
-    protected void BindObject(Type type) { Bind<GameObject>(type); }
-    protected void BindImage(Type type) { Bind<Image>(type); }
-    protected void BindText(Type type) { Bind<TextMeshProUGUI>(type); }
-    protected void BindInputField(Type type) { Bind<TMP_InputField>(type); }
-    protected void BindButton(Type type) { Bind<Button>(type); }
+    protected void BindObject(Type type)        { Bind<GameObject>(type); }
+    protected void BindImage(Type type)         { Bind<Image>(type); }
+    protected void BindText(Type type)          { Bind<TextMeshProUGUI>(type); }
+    protected void BindInputField(Type type)    { Bind<TMP_InputField>(type); }
+    protected void BindButton(Type type)        { Bind<Button>(type); }
 
     protected T Get<T>(int idx) where T : UnityEngine.Object
     {
@@ -59,50 +59,77 @@ public class BaseUI : MonoBehaviour
 
     protected GameObject GetObject(int idx) { return Get<GameObject>(idx); }
     protected TextMeshProUGUI GetText(int idx) { return Get<TextMeshProUGUI>(idx); }
-    protected TMP_InputField GetInputField(int idx) { return Get<TMP_InputField>(idx); }
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
 
-
-    private void Bind()
+    public static void BindEvent(GameObject go, Action action, Define.UIEvent type = Define.UIEvent.Click)
     {
-        Transform[] transforms = GetComponentsInChildren<Transform>(true);
-        gameObjectDic = new Dictionary<string, GameObject>(transforms.Length * 4);
-        foreach (Transform child in transforms)
+        UIEventHandler evt = Extension.GetOrAddComponent<UIEventHandler>(go);
+
+        switch (type)
         {
-            gameObjectDic.TryAdd($"{child.gameObject.name}", child.gameObject);
+            case Define.UIEvent.Click:
+                evt.OnClickHandler -= action;
+                evt.OnClickHandler += action;
+                break;
+            case Define.UIEvent.Pressed:
+                evt.OnPressedHandler -= action;
+                evt.OnPressedHandler += action;
+                break;
+            case Define.UIEvent.PointerDown:
+                evt.OnPointerDownHandler -= action;
+                evt.OnPointerDownHandler += action;
+                break;
+            case Define.UIEvent.PointerUp:
+                evt.OnPointerUpHandler -= action;
+                evt.OnPointerUpHandler += action;
+                break;
         }
-
-        Component[] components = GetComponentsInChildren<Component>(true);
-        componentDic = new Dictionary<string, Component>(components.Length * 4);
-        foreach (Component child in components)
-        {
-            if (child != null)
-                componentDic.TryAdd($"{child.gameObject.name}_{components.GetType().Name}", child);
-        }
     }
 
-    public GameObject GetUI(string name)
-    {
-        gameObjectDic.TryGetValue(name, out GameObject gameObject);
-        return gameObject;
-    }
+    #region
+    //private Dictionary<string, GameObject> gameObjectDic;
+    //private Dictionary<string, Component> componentDic;
 
-    public T GetUI<T>(string name) where T : Component
-    {
-        componentDic.TryGetValue($"{name}_{typeof(T).Name}", out Component component);
-        if (component != null)
-            return component as T;
+    //private void Bind()
+    //{
+    //    Transform[] transforms = GetComponentsInChildren<Transform>(true);
+    //    gameObjectDic = new Dictionary<string, GameObject>(transforms.Length * 4);
+    //    foreach (Transform child in transforms)
+    //    {
+    //        gameObjectDic.TryAdd($"{child.gameObject.name}", child.gameObject);
+    //    }
 
-        gameObjectDic.TryGetValue(name, out GameObject gameObject);
-        if (gameObject == null)
-            return null;
+    //    Component[] components = GetComponentsInChildren<Component>(true);
+    //    componentDic = new Dictionary<string, Component>(components.Length * 4);
+    //    foreach (Component child in components)
+    //    {
+    //        componentDic.TryAdd($"{child.gameObject.name}_{components.GetType().Name}", child);
+    //    }
+    //}
 
-        component = gameObject.GetComponent<T>();
-        if (component == null)
-            return null;
+    //public GameObject GetUI(string name)
+    //{
+    //    gameObjectDic.TryGetValue(name, out GameObject gameObject);
+    //    return gameObject;
+    //}
 
-        componentDic.TryAdd($"{name}_{typeof(T).Name}", component);
-        return component as T;
-    }
+    //public T GetUI<T>(string name) where T : Component
+    //{
+    //    componentDic.TryGetValue($"{name}_{typeof(T).Name}", out Component component);
+    //    if (component != null)
+    //        return component as T;
+
+    //    gameObjectDic.TryGetValue(name, out GameObject gameObject);
+    //    if (gameObject == null)
+    //        return null;
+
+    //    component = gameObject.GetComponent<T>();
+    //    if (component == null)
+    //        return null;
+
+    //    componentDic.TryAdd($"{name}_{typeof(T).Name}", component);
+    //    return component as T;
+    //}
+    #endregion
 }

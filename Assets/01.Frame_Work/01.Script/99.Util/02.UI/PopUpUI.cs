@@ -4,5 +4,4 @@ public class PopUpUI : BaseUI
     {
         Manager.UI.ClosePopUpUI();
     }
-    
 }

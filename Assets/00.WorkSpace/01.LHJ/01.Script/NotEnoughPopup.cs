@@ -30,57 +30,7 @@ public class NotEnoughPopup: PopUpUI
     /// </summary>
     public void InitState(InitType initType)
     {
-        TextMeshProUGUI btnTxt;
 
-        advBtn.onClick = new();
-        purchaseBtn.onClick = new();
-        closeBtn.onClick = new();
-
-        switch (initType)
-        {
-            //힌트 개수 부족 시
-            case InitType.NotEnough:
-                advBtn.onClick.AddListener(Adv);
-                btnTxt = advBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if (btnTxt != null)
-                    btnTxt.text = Manager.Text.TextMake(advertise);
-
-                purchaseBtn.onClick.AddListener(Purchase);
-                btnTxt = purchaseBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if (btnTxt != null)
-                    btnTxt.text = Manager.Text.TextMake(buy);
-
-                closeBtn.onClick.AddListener(Close);
-                btnTxt = closeBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if (btnTxt != null)
-                    btnTxt.text = Manager.Text.TextMake(close);
-
-                title.text = Manager.Text.TextMake(buy);
-                info.text = Manager.Text.TextMake(needsComment);
-                break;
-
-
-            //힌트 사용 제한 시
-            case InitType.Reset:
-                advBtn.onClick.AddListener(Manager.Chapter.ResetHintLimit);
-                btnTxt = advBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if(btnTxt != null)
-                    btnTxt.text = Manager.Text.TextMake(reset);
-
-                purchaseBtn.onClick.AddListener(Close);
-                btnTxt = purchaseBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if (btnTxt != null)
-                    btnTxt.text = Manager.Text.TextMake(close);
-
-                closeBtn.gameObject.SetActive(false);
-                title.text = Manager.Text.TextMake(limit);
-                info.text = 
-                    $"{Manager.Text.TextMake(limitComment)}\n" +
-                    $"{Manager.Text.TextMake(resetQuestion)}\n" +
-                    $"{Manager.Text.TextMake(limitCountMsg)} : {Manager.Chapter.LimitHintUseCount}" +
-                    $"{Manager.Text.TextMake(resetRange)} : {Manager.Chapter.LimitHintQuestionIdx} - {Manager.Chapter.HintData.GetQuestionCount()}";
-                break;
-        }
     }
 
     /// <summary>
@@ -89,7 +39,7 @@ public class NotEnoughPopup: PopUpUI
     private void Adv()
     {
         AddHintAndClose();
-        Utils.ShowAdvertise();
+       // Utils.ShowAdvertise();
     }
     /// <summary>
     /// 구매 메소드
@@ -104,7 +54,7 @@ public class NotEnoughPopup: PopUpUI
     private void AddHintAndClose()
     {
         Manager.UI.ClosePopUpUI();
-        Manager.Data.UserGameData.hint++;
+        //Manager.Data.UserGameData.hint++;
     }
 
     public enum InitType

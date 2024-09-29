@@ -1,32 +1,11 @@
 using System;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Utils
 {
-    public static Advertise ShowAdvertise()
-    {
-//#if UNITY_EDITOR
-//        return null;
-//#endif
-        Advertise adv = Manager.Resource.Load<Advertise>("UI/Popup/Advertise");
-        return Manager.UI.ShowPopUpUI(adv);
-    }
-
-    public static void CreateDirectoryIfNotExists(string path)
-    {
-        if (!Directory.Exists(path))
-        {
-            Directory.CreateDirectory(path);
-        }
-    }
-    public static void ShowInfo(string _txt)
-    {
-        return;
-        StatePopup stat = Manager.Resource.Load<StatePopup>("UI/Popup/StatPopup");
-        stat.txt.text = _txt;
-        Manager.UI.ShowPopUpUI(stat);
-    }
+ 
     public static T ParseEnum<T>(string value, bool ignoreCase = true)
     {
         return (T)Enum.Parse(typeof(T), value, ignoreCase);
@@ -35,9 +14,7 @@ public class Utils
     public static T GetOrAddComponent<T>(GameObject go) where T : UnityEngine.Component
     {
         T component = go.GetComponent<T>();
-        if (component == null)
-            component = go.AddComponent<T>();
-        return component;
+        return component ?? go.AddComponent<T>();
     }
 
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
@@ -95,5 +72,8 @@ public class Utils
             return transform.gameObject;
         return null;
     }
+
+
+
 
 }

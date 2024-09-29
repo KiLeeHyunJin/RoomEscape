@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class DataManager : Singleton<DataManager>
 {
-    [SerializeField] private UserGameData userGameData = new();
+    //[SerializeField] private UserGameData userGameData = new();
 
     private string path;
     public string DataPath
@@ -26,6 +26,8 @@ public class DataManager : Singleton<DataManager>
         if (string.IsNullOrEmpty(path))
             InitPath();
     }
+
+
 
     void InitPath()
     {

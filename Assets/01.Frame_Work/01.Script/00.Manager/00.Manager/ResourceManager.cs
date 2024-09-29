@@ -29,40 +29,25 @@ public class ResourceManager : Singleton<ResourceManager>
 
     #region AddressableData
     private Dictionary<string, AsyncOperationHandle>[] assetArray;
-    private Dictionary<string, AsyncOperationHandle>[] dontReleaseArray;
+
     private Dictionary<string, AsyncOperationHandle<Sprite[]>> multiArray;
     private Dictionary<string, AsyncOperationHandle<Sprite[]>> multidontReleaseArray;
 
-    struct StateData
-    {
-        public ResourceType type;
-        public string fileName;
-        public bool donRelease;
-    }
-
     class WaitData
     {
-        public WaitData(ResourceType _type, string _fileName, bool _donRelease, Action<UnityEngine.Object> _call)
+        public WaitData(string fileName, Action<UnityEngine.Object> call)
         {
-            state.type = _type;
-            state.fileName = _fileName;
-            state.donRelease = _donRelease;
-            call = _call;
+            this.fileName = fileName;
+            this.call = call;
         }
-        public StateData state;
+        public string fileName;
         public Action<UnityEngine.Object> call;
     }
 
     private Dictionary<string, AssetBundle> BundleDic
     { get { return bundleDic ??= new(); } }
-    private Dictionary<string, AssetBundle> DonReleaseBundleDic
-    { get { return donReleaseBundleDic ??= new(); } }
 
     #endregion AddressableData
-
-
-    //다운로드 중인 번들
-    private HashSet<string> loadBundleName;
 
 
     //다운로드 대기 번들
@@ -71,12 +56,6 @@ public class ResourceManager : Singleton<ResourceManager>
     //다운로드 된 번들
     private Dictionary<string, AssetBundle> bundleDic;
     private Dictionary<string, AssetBundle> donReleaseBundleDic;
-
-    public TMP_FontAsset FontBold { get { return fontBold; } }
-    public TMP_FontAsset FontLight { get { return fontLight; } }
-
-    TMP_FontAsset fontBold;
-    TMP_FontAsset fontLight;
 
     /// <summary>
     /// 로드 시도 중인 개수를 반환합니다.
@@ -98,11 +77,8 @@ public class ResourceManager : Singleton<ResourceManager>
         AssetBundle.UnloadAllAssetBundles(true);
 
         resources = new();
-        loadBundleName = new();
         waitBundleDic = new();
 
-        fontBold = Manager.Resource.Load<TMP_FontAsset>("Font/Maplestory Bold SDF");
-        fontLight = Manager.Resource.Load<TMP_FontAsset>("Font/Maplestory Light SDF");
         //InitAddressable();
     }
 
@@ -113,74 +89,35 @@ public class ResourceManager : Singleton<ResourceManager>
     public void ClearWaitList()
     {
         waitBundleDic.Clear();
-        loadBundleName.Clear();
     }
 
     /// <summary>
     ///해당 번들 목록에 추가
     /// </summary>
-    public void GetLoadBundle(string bundleName, AssetBundle bundle, bool donReleaseState = false)
+    public void GetLoadBundle(string bundleName, AssetBundle bundle)
     {
-        Dictionary<string, AssetBundle> dic = GetDictionary(donReleaseState);
-        if (dic.ContainsKey(bundleName))
+        if (BundleDic.ContainsKey(bundleName))
             return;
 
-        dic.Add(bundleName, bundle);
+        BundleDic.Add(bundleName, bundle);
         SendWaitCall(bundleName);
     }
 
     /// <summary>
     /// 번들 로드 시도
     /// </summary>
-    public void GetAsset(string bundleName, string fileName, ResourceType _type, Action<UnityEngine.Object> returnCall = null, bool donReleaseState = false)
+    public void GetAsset(string bundleName, string fileName, Action<UnityEngine.Object> returnCall = null)
     {
-        Dictionary<string, AssetBundle> dic = GetDictionary(donReleaseState);
         //번들이 딕셔너리에 존재하는 지 확인
-        if (dic.ContainsKey(bundleName))
+        if (BundleDic.ContainsKey(bundleName))
         {
             //존재하면 번들에서 데이터를 불러온다.
-            CallMethod(new(_type, fileName, donReleaseState, returnCall), bundleName);
-            if (waitBundleDic.ContainsKey(bundleName)) //대기중인 콜백이 있다면 해당 콜백 진행
-                SendWaitCall(bundleName);
-            return;
-        }
-        //번들에 없으면 대기열에 넣어놓는다.
-        if (loadBundleName.Add(bundleName) == false)
-        {
-            if (waitBundleDic.ContainsKey(bundleName) == false)
-                waitBundleDic.Add(bundleName, new());
-            //수행해야하는 내용을 추가해준다.
-            waitBundleDic[bundleName].Add(new(_type, fileName, donReleaseState, returnCall));
-            return;
+            CallMethod(new(fileName, returnCall), bundleName);
+            SendWaitCall(bundleName);
         }
         else
         {
-            //대기열 추가
-            waitBundleDic.Add(bundleName, new());
-            //대기열의 내용을 추가
-            waitBundleDic[bundleName].
-                Add(new(_type, fileName, donReleaseState, returnCall));
-            //강제 다운로드인지 아닌지 판별해서 액션에 저장
-            Action<string, Action<AssetBundle>> loadAction = Manager.DownLoadBundle.GetLoadBundle;
-
-            loadAction?.Invoke(bundleName, (bundle) =>
-            {
-                if (bundle == null)
-                {
-                    //대기열에서 삭제 및 로드 번들 네임에서 제거
-                    waitBundleDic.Remove(bundleName);
-                    loadBundleName.Remove(bundleName);
-                    //로드 실패
-                    LoadFail(bundleName);
-                }
-                else
-                {
-                    //번들을 딕셔너리에 추가 및 로드 내용 진행
-                    dic.Add(bundleName, bundle);
-                    SendWaitCall(bundleName);
-                }
-            });
-            return;
+            returnCall?.Invoke(null);
         }
     }
 
@@ -193,15 +130,14 @@ public class ResourceManager : Singleton<ResourceManager>
         //대기열에 존재하는지 확인
         if (waitBundleDic.ContainsKey(bundleName) == false)
             return;
+
         //번들 딕셔너리에 존재하는지 확인
-        if (BundleDic.ContainsKey(bundleName) ||
-           DonReleaseBundleDic.ContainsKey(bundleName))
+        if (BundleDic.ContainsKey(bundleName))
         {
             List<WaitData> waitList = waitBundleDic[bundleName];
 
             //콜백 호출 메소드 실행전에 대기열에서 제거
             waitBundleDic.Remove(bundleName);
-            loadBundleName.Remove(bundleName);
 
             foreach (WaitData waitData in waitList)
                 CallMethod(waitData, bundleName);
@@ -211,51 +147,25 @@ public class ResourceManager : Singleton<ResourceManager>
     /// <summary>
     /// 번들에서 데이터를 로드해서 콜백으로 반환
     /// </summary>
-    void GetLoadData<TObject>(string bundleName, in StateData stateData, Action<UnityEngine.Object> bundleRecall) where TObject : UnityEngine.Object
+    void GetLoadData<TObject>(string bundleName, in string fileName, Action<UnityEngine.Object> bundleRecall) where TObject : UnityEngine.Object
     {
         //로드하려는 파일의 이름을 검사
-        if (string.IsNullOrEmpty(stateData.fileName))
+        if (string.IsNullOrEmpty(fileName))
             return;
-        //검사 딕셔너리의 종류를 가져온다.
-        Dictionary<string, AssetBundle> dic = GetDictionary(stateData.donRelease);
 
         //포함되어있는지 확인한다.
-        if (dic.TryGetValue(bundleName, out AssetBundle bundle) &&
-            bundle.Contains(stateData.fileName))
+        if (BundleDic.TryGetValue(bundleName, out AssetBundle bundle) &&
+            bundle.Contains(fileName))
         {
-            bundleRecall?.Invoke(bundle.LoadAsset<TObject>(stateData.fileName)); //데이터 로드 콜백 함수 실행
+            bundleRecall.Invoke(bundle.LoadAsset<TObject>(fileName)); //데이터 로드 콜백 함수 실행
         }
     }
 
     //번들에서 데이터를 추출한다.
     void CallMethod(WaitData waitdata, string bundleName)
     {
-        switch (waitdata.state.type)
-        {
-            case ResourceType.Animation:
-                break;
-            case ResourceType.Sprite:
-                GetLoadData<Sprite>
-                    (bundleName, in waitdata.state, waitdata.call);
-                break;
-            case ResourceType.AudioClip:
-                GetLoadData<AudioClip>
-                    (bundleName, in waitdata.state, waitdata.call);
-                break;
-            case ResourceType.GameObject:
-                GetLoadData<GameObject>
-                    (bundleName, in waitdata.state, waitdata.call);
-                break;
-            case ResourceType.Scriptable:
-                GetLoadData<ScriptableObject>
-                   (bundleName, in waitdata.state, waitdata.call);
-                break;
-        }
-    }
 
-    //추출해야하는 딕셔너리를 확인해서 반환
-    Dictionary<string, AssetBundle> GetDictionary(bool donRelease)
-        => donRelease ? DonReleaseBundleDic : BundleDic;
+    }
 
     void LoadFail(string bundleName)
         => Message.LogError($"{bundleName}번들 Load Fail.");
@@ -277,7 +187,6 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         foreach (AssetBundle bundle in AssetBundle.GetAllLoadedAssetBundles())
         {
-            //Debug.Log($"Unload {bundle.name}");
             bundle.Unload(true);
         }
     }
@@ -291,59 +200,59 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         #region Addressable
         assetArray = new Dictionary<string, AsyncOperationHandle>[(int)AssetType.END];
-        dontReleaseArray = new Dictionary<string, AsyncOperationHandle>[(int)AssetType.END];
         multiArray = new Dictionary<string, AsyncOperationHandle<Sprite[]>>();
         multidontReleaseArray = new Dictionary<string, AsyncOperationHandle<Sprite[]>>();
 
         for (int i = 0; i < (int)AssetType.END; i++)
         {
             assetArray[i] = new Dictionary<string, AsyncOperationHandle>();
-            dontReleaseArray[i] = new Dictionary<string, AsyncOperationHandle>();
         }
         #endregion
     }
 
     //문자열을 이용한 에셋 로드
-    void LoadHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
+    void LoadHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null) where TObject : UnityEngine.Object
     {
         Addressables.LoadAssetAsync<TObject>(path).Completed += (handle) =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 //핸들을 딕셔너리에 추가
-                AddHandle(key, handle, dontRelease);
+                AddHandle(key, handle);
                 //액션 실행
                 call?.Invoke(handle);
             }
         };
     }
+
     //레퍼런스를 이용한 에셋 로드
-    void LoadHandle<TObject>(AssetReferenceT<TObject> path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
+    void LoadHandle<TObject>(AssetReferenceT<TObject> path, string key, Action<AsyncOperationHandle<TObject>> call = null) where TObject : UnityEngine.Object
     {
         path.LoadAssetAsync<TObject>().Completed += (handle) =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 //핸들을 딕셔너리에 추가
-                AddHandle(key, handle, dontRelease);
+                AddHandle(key, handle);
                 //액션 실행
                 call?.Invoke(handle);
             }
         };
     }
-    void LoadHandleMultiSprite(AssetReferenceSprite path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null, bool dontRelease = false)
+    void LoadHandleMultiSprite(AssetReferenceSprite path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null)
     {
         path.LoadAssetAsync<Sprite[]>().Completed += (handle) =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 //핸들을 딕셔너리에 추가
-                AddHandle(key, handle, dontRelease);
+                AddHandle(key, handle);
                 //액션 실행
                 call?.Invoke(handle);
             }
         };
     }
+
     void LoadHandleMultiSprite(string path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null, bool dontRelease = false)
     {
         Addressables.LoadAssetAsync<Sprite[]>(path).Completed += (handle) =>
@@ -351,134 +260,126 @@ public class ResourceManager : Singleton<ResourceManager>
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 //핸들을 딕셔너리에 추가
-                AddHandle(key, handle, dontRelease);
+                AddHandle(key, handle);
                 //액션 실행
                 call?.Invoke(handle);
             }
         };
     }
 
-    void AddHandle(string key, AsyncOperationHandle<Sprite[]> handle, bool dontRelease = false)
+    void AddHandle(string key, AsyncOperationHandle<Sprite[]> handle)
     {
         //추가할 위치를 선택
-        Dictionary<string, AsyncOperationHandle>[] listDic = dontRelease ? dontReleaseArray : assetArray;
-        if (listDic[(int)CheckEnum<Sprite>()].ContainsKey(key))
+        if (assetArray[(int)CheckEnum<Sprite>()].ContainsKey(key))
             return;
-        listDic[(int)CheckEnum<Sprite>()].Add(key, handle);
+        assetArray[(int)CheckEnum<Sprite>()].Add(key, handle);
     }
+
     //핸들을 딕셔너리에 추가
-    void AddHandle<TObject>(string key, AsyncOperationHandle<TObject> handle, bool dontRelease = false) where TObject : UnityEngine.Object
+    void AddHandle<TObject>(string key, AsyncOperationHandle<TObject> handle) where TObject : UnityEngine.Object
     {
         //추가할 위치를 선택
-        Dictionary<string, AsyncOperationHandle>[] listDic = dontRelease ? dontReleaseArray : assetArray;
-        if (listDic[(int)CheckEnum<TObject>()].ContainsKey(key))
+        if (assetArray[(int)CheckEnum<TObject>()].ContainsKey(key))
             return;
-        listDic[(int)CheckEnum<TObject>()].Add(key, handle);
+        assetArray[(int)CheckEnum<TObject>()].Add(key, handle);
     }
-    void AddHandleMultiSprite(string key, AsyncOperationHandle<Sprite[]> handle, bool dontRelease = false)
+
+    void AddHandleMultiSprite(string key, AsyncOperationHandle<Sprite[]> handle)
     {
-        //추가할 위치를 선택
-        Dictionary<string, AsyncOperationHandle<Sprite[]>> listDic = dontRelease ? multidontReleaseArray : multiArray;
-        if (listDic.ContainsKey(key))
+        if (multiArray.ContainsKey(key))
             return;
-        listDic.Add(key, handle);
+        multiArray.Add(key, handle);
     }
 
 
     //키를 통해 핸들을 액션을 통해 반환 또는 실행 없을경우 레퍼런스를 이용해 에셋 로드
-    public bool GetHandle<TObject>(AssetReferenceT<TObject> path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
+    public bool GetHandle<TObject>(AssetReferenceT<TObject> path, string key, Action<AsyncOperationHandle<TObject>> call = null) where TObject : UnityEngine.Object
     {
         //잘못된 형식이면 종료
         AssetType objectType = CheckEnum<TObject>();
         if (objectType == AssetType.Other)
             return false;
         //확인할 목록 선택
-        Dictionary<string, AsyncOperationHandle>[] checkArray = dontRelease ? dontReleaseArray : assetArray;
         if (string.IsNullOrEmpty(key))
         {
-            LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
+            LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call);
             return false;
         }
         //존재하면 액션 실행
-        if (checkArray[(int)objectType].ContainsKey(key))
+        if (assetArray[(int)objectType].ContainsKey(key))
         {
-            call?.Invoke(checkArray[(int)objectType][key].Convert<TObject>());
+            call?.Invoke(assetArray[(int)objectType][key].Convert<TObject>());
             return true;
         }
         else
         {
-            LoadHandle(path, key, call, dontRelease);
+            LoadHandle(path, key, call);
             return false;
         }
     }
-    public bool GetHandleMultiSprite(AssetReferenceSprite path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null, bool dontRelease = false)
+
+    public bool GetHandleMultiSprite(AssetReferenceSprite path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null)
     {
         //잘못된 형식이면 종료
         AssetType objectType = AssetType.Sprite;
         if (objectType == AssetType.Other)
             return false;
-        //확인할 목록 선택
-        Dictionary<string, AsyncOperationHandle<Sprite[]>> checkDic = dontRelease ? multidontReleaseArray : multiArray;
         if (string.IsNullOrEmpty(key))
         {
-            LoadHandleMultiSprite(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
+            LoadHandleMultiSprite(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call);
             return false;
         }
         //존재하면 액션 실행
-        if (checkDic.ContainsKey(key))
+        if (multiArray.ContainsKey(key))
         {
-            call?.Invoke(checkDic[key]);
+            call?.Invoke(multiArray[key]);
             return true;
         }
         else
         {
-            LoadHandleMultiSprite(path, key, call, dontRelease);
+            LoadHandleMultiSprite(path, key, call);
             return false;
         }
     }
-    public bool GetHandleMultiSprite(string path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null, bool dontRelease = false)
+    public bool GetHandleMultiSprite(string path, string key, Action<AsyncOperationHandle<Sprite[]>> call = null)
     {
-
-        //확인할 목록 선택
-        Dictionary<string, AsyncOperationHandle<Sprite[]>> checkArray = dontRelease ? multidontReleaseArray : multiArray;
         if (string.IsNullOrEmpty(key))
         {
-            LoadHandleMultiSprite(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
+            LoadHandleMultiSprite(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call);
             return false;
         }
-        else if (checkArray.ContainsKey(key))
+        else if (multiArray.ContainsKey(key))
         {
-            call?.Invoke(checkArray[key]);
+            call?.Invoke(multiArray[key]);
             return true;
         }
         else
         {
-            LoadHandleMultiSprite(path, key, call, dontRelease);
+            LoadHandleMultiSprite(path, key, call);
             return false;
         }
     }
 
     //키를 통해 핸들을 액션을 통해 반환 또는 실행 없을경우 문자열을 이용해 에셋 로드
-    public bool GetHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null, bool dontRelease = false) where TObject : UnityEngine.Object
+    public bool GetHandle<TObject>(string path, string key, Action<AsyncOperationHandle<TObject>> call = null) where TObject : UnityEngine.Object
     {
         AssetType objectType = CheckEnum<TObject>();
         if (objectType == AssetType.Other)
             return false;
         //확인할 목록 선택
-        Dictionary<string, AsyncOperationHandle>[] checkArray = dontRelease ? dontReleaseArray : assetArray;
         if (string.IsNullOrEmpty(key))
         {
-            LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call, dontRelease);
+            LoadHandle(path, UnityEngine.Random.Range(0, float.MaxValue).ToString(), call);
             return false;
         }
-        else if (checkArray[(int)objectType].ContainsKey(key))
+        else if (assetArray[(int)objectType].ContainsKey(key))
         {
-            call?.Invoke(checkArray[(int)objectType][key].Convert<TObject>());
+            call?.Invoke(assetArray[(int)objectType][key].Convert<TObject>());
             return true;
         }
         else
         {
-            LoadHandle(path, key, call, dontRelease);
+            LoadHandle(path, key, call);
             return false;
         }
     }
@@ -491,14 +392,13 @@ public class ResourceManager : Singleton<ResourceManager>
         if (objectType == AssetType.Other)
             return false;
         //확인할 목록 선택
-        Dictionary<string, AsyncOperationHandle>[] checkArray = dontRelease ? dontReleaseArray : assetArray;
         //존재하는지 확인
-        if (checkArray[(int)objectType].ContainsKey(key))
+        if (assetArray[(int)objectType].ContainsKey(key))
         {
             //유효성 검사
-            if (checkArray[(int)objectType][key].IsValid())
+            if (assetArray[(int)objectType][key].IsValid())
             {
-                call?.Invoke(checkArray[(int)objectType][key].Convert<TObject>());
+                call?.Invoke(assetArray[(int)objectType][key].Convert<TObject>());
                 return true;
             }
         }
@@ -584,13 +484,5 @@ public class ResourceManager : Singleton<ResourceManager>
 
         Other,
         END
-    }
-    public enum BundleType
-    {
-        chapter01 = 1 << 5,
-        chapter02 = 1 << 6,
-        chapter03 = 1 << 7,
-
-        END = 1 << 31
     }
 }

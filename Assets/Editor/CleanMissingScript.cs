@@ -8,40 +8,6 @@ public class CleanMissingScript : EditorWindow
 {
 
 
-    [MenuItem("MyTool/Warning/AllImageSpriteRemove")]
-    public static void AllRemoveImg()
-    {
-        Canvas[] canvases = FindObjectsOfType<Canvas>();
-        foreach (Canvas canvase in canvases)
-        {
-            FindImagesInChildren(canvase.transform);
-        }
-    }
-
-    static void FindImagesInChildren(Transform parent)
-    {
-        if (parent.TryGetComponent<ResourceRef>(out ResourceRef res))
-        {
-            if(parent.TryGetComponent<Image>(out Image img))
-            {
-                img.sprite = null;
-            }
-        }
-
-        foreach (Transform child in parent)
-        {
-            if(child.TryGetComponent<Image>(out Image image))
-            {
-                if (parent.TryGetComponent<Image>(out Image img))
-                {
-                    img.sprite = null;
-                }
-            }
-            FindImagesInChildren(child);
-        }
-    }
-
-
     [MenuItem("MyTool/Warning/AllTextFontAssetRemove")]
     public static void AllRemoveRef()
     {

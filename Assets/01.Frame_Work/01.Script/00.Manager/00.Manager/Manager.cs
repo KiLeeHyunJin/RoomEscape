@@ -10,12 +10,6 @@ public static class Manager
     public static SceneManager Scene { get { return SceneManager.Instance; } }
     public static SoundManager Sound { get { return SoundManager.Instance; } }
     public static UIManager UI { get { return UIManager.Instance; } }
-    public static BackendManager Backend { get { return BackendManager.Instance; }}
-    public static InventoryManager Inventory { get { return InventoryManager.Instance; } }
-    public static ChapterManager Chapter { get { return ChapterManager.Instance; ; } }
-    public static TextManager Text { get { return TextManager.Instance;} }
-    //public static AssetBundleManager AssetBundle { get { return AssetBundleManager.Instance; } }
-    public static DownLoadBundleManager DownLoadBundle { get { return DownLoadBundleManager.Instance; } }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
@@ -27,10 +21,6 @@ public static class Manager
         SceneManager.ReleaseInstance();
         SoundManager.ReleaseInstance();
         UIManager.ReleaseInstance();
-        BackendManager.ReleaseInstance();
-        InventoryManager.ReleaseInstance();
-        ChapterManager.ReleaseInstance();
-        DownLoadBundleManager.ReleaseInstance();
 
         ResourceManager.CreateInstance();
         GameManager.CreateInstance();
@@ -39,10 +29,5 @@ public static class Manager
         SceneManager.CreateInstance();
         SoundManager.CreateInstance();
         UIManager.CreateInstance();
-        BackendManager.CreateInstance();
-        InventoryManager.CreateInstance();
-        ChapterManager.CreateInstance();
-        TextManager.CreateInstance();
-        DownLoadBundleManager.CreateInstance();
     }
 }
