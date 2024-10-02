@@ -164,7 +164,8 @@ public class LobbyMain : BaseUI
             PlayGame();
         else
         {
-            string bundleName = $"chapter{string.Format("{0:D2}", chapterNum + 1)}";
+            string bundleName = $"chapter{string.Format("{0:D2}", chapterNum)}";
+            Message.Log($"Bundle Name : {bundleName}");
             //번들을 갖고있는지 확인
             Manager.DownLoadBundle.HasBundle(bundleName, (state) =>
             {

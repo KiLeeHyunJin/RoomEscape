@@ -134,6 +134,7 @@ public class LoginTitle : BaseUI
 
     void LoginSuccess(BackendReturnObject callback)
     {
+        Manager.DownLoadBundle.LoadToServerVersion();
         GetButton((int)Buttons.GoogleLogin).gameObject.SetActive(false);
         GetButton((int)Buttons.GuestLogin).gameObject.SetActive(false);
         GetButton((int)Buttons.LoginBackground).gameObject.SetActive(true);

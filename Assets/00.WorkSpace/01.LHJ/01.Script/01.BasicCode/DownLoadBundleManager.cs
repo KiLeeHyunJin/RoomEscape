@@ -32,7 +32,7 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
      string GetServerVersionURL {
         get
         {
-            return $"{TEST_SERVER_URL}/export?format=csv";
+            return $"{ORIGIN_SERVER_URL}/export?format=csv";
         }
     }
 
@@ -411,18 +411,23 @@ public class DownLoadBundleManager : Singleton<DownLoadBundleManager>
         {
             bundleData = VersionTable[bundleName];
 
+
+
             UnityWebRequest uwr = UnityWebRequest.Get(bundleData[(int)VersionTableColumn.DownloadLink]);
-            UnityWebRequestAsyncOperation oper = uwr.SendWebRequest();
+            waitQueue.Enqueue(new(uwr, bundleName));
 
-            oper.completed += (asyncOperation) =>
-            {
-                UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(
-                    ExtractSubstring(bundleData[(int)VersionTableColumn.DownloadLink]),
-                    Hash128.Parse(bundleData[(int)VersionTableColumn.Version]),
-                    0);
 
-                waitQueue.Enqueue(new(tupleUwr, bundleName));
-            };
+            //UnityWebRequestAsyncOperation oper = uwr.SendWebRequest();
+
+            //oper.completed += (asyncOperation) =>
+            //{
+            //    UnityWebRequest tupleUwr = UnityWebRequestAssetBundle.GetAssetBundle(
+            //        ExtractSubstring(bundleData[(int)VersionTableColumn.DownloadLink]),
+            //        Hash128.Parse(bundleData[(int)VersionTableColumn.Version]),
+            //        0);
+
+            //    waitQueue.Enqueue(new(tupleUwr, bundleName));
+            //};
         }
 
         while (waitQueue.Count != downLoadArray.Count)
