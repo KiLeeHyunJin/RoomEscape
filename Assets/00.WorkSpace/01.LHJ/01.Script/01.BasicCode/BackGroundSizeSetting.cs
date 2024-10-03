@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Ã©ÅÍ ÇÊµåÀÇ Å©±â ºñÀ²À» Àç¼³Á¤ÇÑ´Ù.
+/// ì±•í„° í•„ë“œì˜ í¬ê¸° ë¹„ìœ¨ì„ ì¬ì„¤ì •í•œë‹¤.
 /// </summary>
 public class BackGroundSizeSetting : MonoBehaviour
 {
@@ -13,14 +13,14 @@ public class BackGroundSizeSetting : MonoBehaviour
         InitSize();
     }
     /// <summary>
-    /// ÇÏÀ§ °´Ã¼ÀÇ »çÀÌÁî¸¦ Àç¼³Á¤ÇÑ´Ù.
+    /// í•˜ìœ„ ê°ì²´ì˜ ì‚¬ì´ì¦ˆë¥¼ ì¬ì„¤ì •í•œë‹¤.
     /// </summary>
     public void InitSize()
     {
         StartCoroutine(SynchRatio());
     }
     /// <summary>
-    /// 1ÇÁ·¹ÀÓ ÀÌÈÄ ºñÀ² ¼³Á¤ÇÑ´Ù.
+    /// 1í”„ë ˆì„ ì´í›„ ë¹„ìœ¨ ì„¤ì •í•œë‹¤.
     /// </summary>
     IEnumerator SynchRatio()
     {
@@ -29,47 +29,47 @@ public class BackGroundSizeSetting : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÏÀ§ °´Ã¼ Å©±â ºñÀ² ¼³Á¤ÇÑ´Ù.(Ã©ÅÍ ÇÊµå)
+    /// í•˜ìœ„ ê°ì²´ í¬ê¸° ë¹„ìœ¨ ì„¤ì •í•œë‹¤.(ì±•í„° í•„ë“œ)
     /// </summary>
     void FlowSynch()
     {
-        //ÀÚ½ÄÀÌ ¾øÀ» °æ¿ì Á¾·á
+        //ìì‹ì´ ì—†ì„ ê²½ìš° ì¢…ë£Œ
         if (transform.childCount == 0)
             return;
 
-        //Äµ¹ö½º°¡ ¾øÀ» °æ¿ì °¡Á®¿À±â
+        //ìº”ë²„ìŠ¤ê°€ ì—†ì„ ê²½ìš° ê°€ì ¸ì˜¤ê¸°
         if (scaler == null)
             scaler = GetComponentInParent<CanvasScaler>();
-        //µğ¹ÙÀÌ½º ºñÀ² °è»ê
+        //ë””ë°”ì´ìŠ¤ ë¹„ìœ¨ ê³„ì‚°
         float deviceHeightRatio = 
             Screen.height / (scaler.transform as RectTransform).localScale.x;
 
         //
         foreach (Transform parent in transform)
         {
-            //³ôÀÌ°ª °¡Á®¿À±â
             RectTransform parentRect = parent as RectTransform;
             float height = parentRect.rect.height;
-
-            //°ªÀÌ ¾ø°Å³ª ÀÌ»óÇÒ °æ¿ì ³Ñ±ä´Ù.
+            
             if (height <= 0)
                 continue;
-            
-            //ºñÀ²À» °è»êÇÑ´Ù.
+
+            //ë¹„ìœ¨ì„ ê³„ì‚°í•œë‹¤.
             float adjustmentValue = deviceHeightRatio / height;
 
-            //ÇöÀç Å©±â¿¡ ºñÀ²À» °öÇÑ´Ù.
-            parentRect.sizeDelta *= adjustmentValue;
-            //Å©±â ÃÊ±âÈ­
-            parentRect.localScale = Vector3.one;
+            parentRect.sizeDelta *= adjustmentValue;//í˜„ì¬ í¬ê¸°ì— ë¹„ìœ¨ì„ ê³±í•œë‹¤.
+            parentRect.localScale = Vector3.one;//í¬ê¸° ì´ˆê¸°í™”
 
-            //ÀÚ½ÄµéÀº À§Ä¡ ¹× ½ºÄ³ÀÏ¸¸ ºñÀ²·Î °öÇÑ´Ù.
             foreach (Transform child in parent)
-            {
-                RectTransform childRect = child as RectTransform;
-                childRect.anchoredPosition *= adjustmentValue;
-                childRect.localScale *= adjustmentValue;
+            { //ìì‹ë“¤ì€ ìœ„ì¹˜ ë° ìŠ¤ìºì¼ë§Œ ë¹„ìœ¨ë¡œ ê³±í•œë‹¤.
+                SetChildRatio(child, adjustmentValue);
             }
         }
+    }
+
+    void SetChildRatio(Transform child, float adjustmentValue)
+    {
+        RectTransform childRect = child as RectTransform;
+        childRect.anchoredPosition *= adjustmentValue;
+        childRect.localScale *= adjustmentValue;
     }
 }
