@@ -93,6 +93,7 @@ public class LoginTitle : BaseUI
     void Delete()
     {
         Backend.BMember.DeleteGuestInfo();
+        Caching.ClearCache();
     }
 
     /// <summary>

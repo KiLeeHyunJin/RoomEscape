@@ -60,11 +60,11 @@ public class ResolutionFlowChanger : MonoBehaviour
             //비율 저장
             resolution.originRatio = scaler.referenceResolution.x / scaler.referenceResolution.y;
 
-            if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
-            {
-                //스케일 위드 설정이면 현재 기기 해상도로 설정
-                scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
-            }
+            //if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+            //{
+            //    //스케일 위드 설정이면 현재 기기 해상도로 설정
+            //    scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
+            //}
         }
         else
         {
@@ -124,11 +124,11 @@ public class ResolutionFlowChanger : MonoBehaviour
                 //만일 텍스트 컴포넌트를 갖고 있다면 Auto사이즈 조정
             }
         }
-        //스케일 위드 설정이면 변경된 해상도로 설정
-        if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
-        {
-            scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
-        }
+        ////스케일 위드 설정이면 변경된 해상도로 설정
+        //if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+        //{
+        //    scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
+        //}
         //변경에 사용했던 값 저장 (값을 복원할때 사용)
         resolution.changeValue = changeAnchorValue;
         //현재 해상도 저장(변경 안되었을때 함수 빠르게 종료할때 사용)
