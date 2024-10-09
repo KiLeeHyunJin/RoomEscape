@@ -243,9 +243,6 @@ public class LobbyMain : BaseUI
 
     bool CheckTutorial()
     {
-#if UNITY_EDITOR
-        return false;
-#endif
         UserGameData userGameData = Manager.Data.UserGameData;
 
         int chapterState = userGameData.chapter;

@@ -15,9 +15,12 @@ public class SwipeController : MonoBehaviour
         pos = new float[count];
         Vector2 sizedelta = (GetComponentInParent<ScrollRect>().transform as RectTransform).sizeDelta;
 
+        Transform trans;
         for (int i = 0; i < count; i++)
         {
-            (transform.GetChild(i).transform as RectTransform).sizeDelta = sizedelta;
+            trans = transform.GetChild(i).transform;
+            (trans as RectTransform).sizeDelta = sizedelta;
+            trans.localScale = Vector3.one;
         }
         swipeCo = StartCoroutine(SwipeRoutine());
     }
